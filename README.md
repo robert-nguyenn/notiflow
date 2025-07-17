@@ -1,43 +1,28 @@
-# 🐼 NotifyFlow - Enterprise-Grade Event Monitoring Platform
+# 🐼 NotifyFlow - Enterprise Event Monitoring S## ✨ Key Features
 
-> A sophisticated full-stack SaaS application demonstrating modern web development practices and enterprise-level architecture
+- 🤖 **Smart Event Processing** - AI-powered filtering and categorization
+- 🌐 **Multi-Platform Delivery** - Discord, Slack, Teams, Email notifications  
+- 📊 **Analytics Dashboard** - Real-time metrics and trend analysis
+- 💳 **Subscription Management** - Stripe integration with usage-based billing
+- 🔒 **Enterprise Security** - OAuth 2.0, rate limiting, GDPR compliance
+- ⚡ **Developer API** - RESTful endpoints with comprehensive documentation> Production-ready full-stack platform showcasing modern web development and enterprise architecture
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue.svg)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-14.0+-black.svg)](https://nextjs.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
+![Project Image](https://github.com/robert-nguyenn/notificationpanda/blob/main/public/thumbnail.png)
 
-## 🚀 Project Overview
+## 🚀 Overview
 
-NotifyFlow is a production-ready event monitoring SaaS platform that I architected and developed to showcase enterprise-level full-stack development skills. This project demonstrates proficiency in modern web technologies, system design, and business logic implementation.
+A sophisticated event monitoring SaaS platform built to demonstrate enterprise-level full-stack development skills. Features real-time notifications, advanced analytics, subscription management, and multi-platform integrations.
 
-### 🎯 **Why This Project Stands Out**
+## ⚡ Tech Stack
 
-- **Enterprise Architecture**: Scalable microservice-inspired design with clean separation of concerns
-- **Modern Tech Stack**: Latest Next.js 14+ with App Router, TypeScript, and cutting-edge tooling
-- **Production Ready**: Complete with authentication, payments, database management, and deployment
-- **Business Logic**: Real subscription management, webhook handling, and event processing
-- **UI/UX Excellence**: Professional design system with accessibility and responsive design
-
-## 🏗️ Technical Architecture
-
-### **Frontend Excellence**
-- **Next.js 14+ App Router** - Server-side rendering with optimal performance
-- **TypeScript** - 100% type-safe codebase for maintainability
-- **Tailwind CSS + shadcn/ui** - Consistent, scalable design system
-- **Responsive Design** - Mobile-first approach with perfect cross-device compatibility
-
-### **Backend & Database**
-- **Prisma ORM** - Type-safe database operations with PostgreSQL
-- **tRPC** - End-to-end type safety between client and server
-- **Webhook Management** - Real-time event processing and notifications
-- **Data Validation** - Robust input validation with Zod schemas
-
-### **Business & Integration**
-- **Stripe Integration** - Complete payment processing and subscription management
-- **Clerk Authentication** - Secure user management with social logins
-- **Discord API** - Real-time notification delivery system
-- **RESTful APIs** - Clean, documented API endpoints for external integrations
+**Frontend**: Next.js 14 App Router, TypeScript, Tailwind CSS, shadcn/ui  
+**Backend**: Prisma ORM, PostgreSQL, tRPC, Webhooks  
+**Integration**: Stripe payments, Clerk auth, Discord API  
+**Infrastructure**: Vercel deployment, real-time notifications
 
 ## ✨ Key Features & Capabilities
 
@@ -71,96 +56,34 @@ NotifyFlow is a production-ready event monitoring SaaS platform that I architect
 - Data encryption at rest and in transit
 - GDPR-compliant data handling
 
-## 🛠️ Development Practices Demonstrated
+## 🛠️ Skills Demonstrated
 
-- **Clean Code Architecture** - SOLID principles and design patterns
-- **Test-Driven Development** - Comprehensive test coverage
-- **CI/CD Pipeline** - Automated testing and deployment
-- **Error Handling** - Graceful error management and logging
-- **Performance Optimization** - Code splitting, caching, and CDN usage
-- **Documentation** - Comprehensive API documentation and code comments
+- **Full-Stack Development** - Modern React/Next.js with TypeScript
+- **Database Design** - PostgreSQL with Prisma ORM optimization  
+- **Payment Integration** - Complete Stripe subscription workflows
+- **API Development** - RESTful design with tRPC type safety
+- **Authentication** - Secure OAuth 2.0 implementation
+- **DevOps** - Production deployment and monitoring
 
 ## 🚀 Quick Start
 
 ```bash
-# Clone the repository
 git clone https://github.com/robert-nguyenn/notificationpanda.git
 cd notificationpanda
-
-# Install dependencies
 npm install
-
-# Set up environment variables
-cp .env.example .env.local
-# Fill in your API keys and database URL
-
-# Set up the database
-npx prisma generate
-npx prisma db push
-
-# Start development server
+cp .env.example .env.local  # Fill in your API keys
+npx prisma generate && npx prisma db push
 npm run dev
 ```
 
-## 🌟 Live Demo & Deployment
+## 🌟 Demo & Contact
 
-🔗 **Live Application**: [View Demo](https://your-demo-url.com)  
-📱 **Mobile Responsive**: Fully optimized for all devices  
-⚡ **Performance**: 95+ Lighthouse score across all metrics
-
-## 📈 Business Impact & Metrics
-
-- **Scalability**: Designed to handle 10K+ events per minute
-- **Reliability**: 99.9% uptime with proper error handling
-- **User Experience**: Sub-200ms page load times
-- **Conversion**: Optimized funnel with A/B tested components
-
-## 🎓 Skills Demonstrated
-
-**Frontend Development**
-- Advanced React patterns and hooks
-- Performance optimization techniques
-- Accessibility (WCAG 2.1 AA compliance)
-- Progressive Web App features
-
-**Backend Development**
-- RESTful API design and implementation
-- Database schema design and optimization
-- Authentication and authorization
-- Payment processing and webhooks
-
-**DevOps & Deployment**
-- Docker containerization
-- Vercel/Railway deployment
-- Environment management
-- Monitoring and logging
-
-**Business Acumen**
-- SaaS business model implementation
-- User onboarding and retention
-- Subscription management
-- Analytics and reporting
-
-## 📞 Let's Connect
-
-I'm passionate about building scalable web applications that solve real business problems. This project showcases my ability to deliver production-ready solutions from concept to deployment.
-
-**Portfolio**: [your-portfolio.com](https://your-portfolio.com)  
-**LinkedIn**: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)  
-**Email**: your.email@example.com
+🔗 **Live Demo**: [View Application](https://your-demo-url.com)  
+� **Email**: your.email@example.com  
+💼 **LinkedIn**: [Connect with me](https://linkedin.com/in/yourprofile)
 
 ---
 
-## 🙏 Acknowledgments
+##  License
 
-- **Clerk** - Authentication infrastructure
-- **Stripe** - Payment processing platform
-- **Vercel** - Deployment and hosting platform
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-*Built with ❤️ using modern web technologies to demonstrate enterprise-level development capabilities.*
+MIT License - See [LICENSE](LICENSE) file for details.
