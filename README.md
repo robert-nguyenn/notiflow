@@ -6,7 +6,6 @@
 [![Next.js](https://img.shields.io/badge/Next.js-14.0+-black.svg)](https://nextjs.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-![Project Image](https://github.com/joschan21/pingpanda/blob/main/public/thumbnail.png)
 
 ## 🚀 Project Overview
 
