@@ -14,8 +14,8 @@ const eb_garamond = EB_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: "jStack App",
-  description: "Created using jStack",
+  title: "NotifyFlow - Smart Business Alerts",
+  description: "AI-powered business notifications for Discord, Slack, and more",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 
