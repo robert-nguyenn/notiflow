@@ -11,8 +11,6 @@
 [![Next.js](https://img.shields.io/badge/Next.js-14.0+-black.svg)](https://nextjs.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-![Project Image](https://github.com/robert-nguyenn/notificationpanda/blob/main/public/thumbnail.png)
-
 ## 🚀 Overview
 
 A sophisticated event monitoring SaaS platform built to demonstrate enterprise-level full-stack development skills. Features real-time notifications, advanced analytics, subscription management, and multi-platform integrations.
