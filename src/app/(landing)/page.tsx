@@ -30,21 +30,21 @@ const Page = () => {
   return (
     <>
       <section className="relative py-24 sm:py-32 bg-gradient-to-br from-brand-25 via-brand-50 to-brand-100 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
         {/* Floating decorative elements */}
-        <div className="absolute top-24 left-10 w-20 h-20 bg-gradient-to-br from-brand-400 to-brand-600 rounded-full blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-32 right-16 w-32 h-32 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-full blur-xl opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
-        
-        <MaxWidthWrapper className="text-center relative z-10">
-          <div className="relative mx-auto text-center flex flex-col items-center gap-12">
-            <div className="flex items-center gap-3 mb-6 animate-fade-in">
+        <div className="absolute top-24 left-10 w-20 h-20 bg-gradient-to-br from-brand-400 to-brand-600 rounded-full blur-xl opacity-20 animate-pulse pointer-events-none"></div>
+        <div className="absolute bottom-32 right-16 w-32 h-32 bg-gradient-to-br from-purple-400 to-indigo-600 rounded-full blur-xl opacity-20 animate-pulse pointer-events-none" style={{animationDelay: '2s'}}></div>
+
+        <MaxWidthWrapper className="text-center relative z-10 flex flex-col items-center justify-center">
+          <div className="relative mx-auto text-center flex flex-col items-center gap-12 w-full">
+            <div className="flex items-center gap-3 mb-6 animate-fade-in justify-center">
               <div className="w-16 h-16 bg-gradient-to-br from-brand-500 to-brand-700 rounded-2xl flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-2xl">🚀</span>
               </div>
               <span className="text-brand-600 font-semibold text-2xl">NotifyFlow</span>
             </div>
-            
-            <div>
+
+            <div className="w-full flex flex-col items-center">
               <Heading>
                 <span>Smart Business Alerts</span>
                 <br />
@@ -54,16 +54,12 @@ const Page = () => {
               </Heading>
             </div>
 
-            <p className="text-base/7 text-gray-600 max-w-prose text-center text-pretty">
+            <p className="text-base/7 text-gray-600 max-w-prose text-center text-pretty mx-auto">
               NotifyFlow transforms how you monitor your business. Get intelligent,
-              contextual notifications for{" "}
-              <span className="font-semibold text-gray-700">
-                revenue milestones, user behaviors, and critical events
-              </span>{" "}
-              delivered to Discord, Slack, or anywhere you work.
+              contextual notifications for <span className="font-semibold text-gray-700">revenue milestones, user behaviors, and critical events</span> delivered to Discord, Slack, or anywhere you work.
             </p>
 
-            <ul className="space-y-2 text-base/7 text-gray-600 text-left flex flex-col items-start">
+            <ul className="space-y-2 text-base/7 text-gray-600 text-left flex flex-col items-start mx-auto w-full max-w-lg">
               {[
                 "AI-powered smart filtering reduces notification noise",
                 "Multi-platform delivery (Discord, Slack, Teams, Email)",
@@ -78,7 +74,7 @@ const Page = () => {
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md mx-auto justify-center">
               <ShinyButton
                 href="/sign-up"
                 className="relative z-10 h-16 w-full text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-800"
@@ -87,8 +83,8 @@ const Page = () => {
                 <span className="ml-2">→</span>
               </ShinyButton>
             </div>
-            
-            <div className="flex items-center gap-6 text-sm text-gray-500">
+
+            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 justify-center w-full mt-4">
               <span className="flex items-center gap-2">
                 <Check className="size-4 text-green-500" />
                 No credit card required
@@ -103,10 +99,10 @@ const Page = () => {
               </span>
             </div>
           </div>
-          
+
           {/* Stats Section */}
-          <div className="mt-20 pt-16 border-t border-gray-200">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="mt-20 pt-16 border-t border-gray-200 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center w-full">
               <div className="space-y-2">
                 <div className="text-3xl font-bold text-brand-700">10,000+</div>
                 <div className="text-sm text-gray-600">Active Users</div>
