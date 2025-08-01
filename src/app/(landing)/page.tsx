@@ -38,10 +38,6 @@ const Page = () => {
         <MaxWidthWrapper className="text-center relative z-10 flex flex-col items-center justify-center">
           <div className="relative mx-auto text-center flex flex-col items-center gap-12 w-full">
             <div className="flex items-center gap-3 mb-6 animate-fade-in justify-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-500 to-brand-700 rounded-2xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-2xl">🚀</span>
-              </div>
-              <span className="text-brand-600 font-semibold text-2xl">NotifyFlow</span>
             </div>
 
             <div className="w-full flex flex-col items-center">
