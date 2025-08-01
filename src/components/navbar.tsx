@@ -3,6 +3,7 @@ import { MaxWidthWrapper } from "./max-width-wrapper"
 import { SignOutButton } from "@clerk/nextjs"
 import { ArrowRight } from "lucide-react"
 import { currentUser } from "@clerk/nextjs/server"
+import Image from "next/image"
 
 // Custom SVG logo
 const Logo = () => (
@@ -57,7 +58,12 @@ export const Navbar = async () => {
       <MaxWidthWrapper>
         <div className="flex h-32 items-center justify-between">
           <Link href="/" className="flex z-40 font-semibold items-center gap-4">
-            <Logo />
+            <Image
+              src="/logo.png"
+              alt="NotifyFlow Logo"
+              width={48}
+              height={48}
+            />
             <span className="text-3xl font-extrabold tracking-tight text-gray-900">
               Notify<span className="text-brand-700">Flow</span>
             </span>
