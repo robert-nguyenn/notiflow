@@ -32,7 +32,7 @@ export const DashboardPageContent = () => {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["user-event-categories"] })
         setDeletingCategory(null)
-      },
+      }, //fix
     }
   )
 
