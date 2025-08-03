@@ -1,17 +1,21 @@
 import Link from "next/link"
 import { MaxWidthWrapper } from "./max-width-wrapper"
 import { SignOutButton } from "@clerk/nextjs"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Menu, X } from "lucide-react"
 import { currentUser } from "@clerk/nextjs/server"
+import { Button } from "./ui/button"
 
-// Custom SVG logo
+// Custom SVG logo with improved accessibility
 const Logo = () => (
   <svg
-    width="48"
-    height="48"
+    width="40"
+    height="40"
     viewBox="0 0 48 48"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="transition-transform duration-200 hover:scale-105"
+    role="img"
+    aria-label="NotifyFlow Logo"
   >
     <rect
       x="4"
@@ -53,7 +57,7 @@ export const Navbar = async () => {
   const user = await currentUser()
 
   return (
-    <nav className="sticky z-[100] h-32 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/90 backdrop-blur-lg shadow-lg transition-all">
+    <nav className="sticky z-[100] h-20 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm transition-all">
       <MaxWidthWrapper>
         <div className="flex h-32 items-center justify-between">
           <Link href="/" className="flex z-40 font-semibold items-center gap-4">
@@ -63,47 +67,66 @@ export const Navbar = async () => {
             </span>
           </Link>
 
-          <div className="h-full flex items-center space-x-6">
+          {/* Navigation Items */}
+          <div className="hidden md:flex h-full items-center space-x-4">
             {user ? (
               <>
                 <SignOutButton>
-                  <button className="px-4 py-2 rounded-lg bg-brand-100 text-brand-700 font-semibold text-base shadow hover:bg-brand-200 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                  <Button
+                    variant="ghost"
+                    className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 font-medium transition-all duration-200"
+                  >
                     Sign out
-                  </button>
+                  </Button>
                 </SignOutButton>
 
-                <Link
-                  href="/dashboard"
-                  className="px-4 py-2 rounded-lg bg-brand-700 text-white font-semibold text-base shadow flex items-center gap-2 hover:bg-brand-600 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500"
-                >
-                  Dashboard <ArrowRight className="ml-1.5 size-5" />
+                <Link href="/dashboard">
+                  <Button className="bg-brand-700 hover:bg-brand-600 text-white font-medium shadow-sm hover:shadow-md transition-all duration-200 group">
+                    Dashboard 
+                    <ArrowRight className="ml-2 size-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+                  </Button>
                 </Link>
               </>
             ) : (
               <>
-                <Link
-                  href="/pricing"
-                  className="px-4 py-2 rounded-lg bg-gray-100 text-gray-700 font-semibold text-base shadow hover:bg-gray-200 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500"
-                >
-                  Pricing
+                <Link href="/pricing">
+                  <Button
+                    variant="ghost"
+                    className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 font-medium transition-all duration-200"
+                  >
+                    Pricing
+                  </Button>
                 </Link>
-                <Link
-                  href="/sign-in"
-                  className="px-4 py-2 rounded-lg bg-brand-100 text-brand-700 font-semibold text-base shadow hover:bg-brand-200 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500"
-                >
-                  Sign in
+                
+                <Link href="/sign-in">
+                  <Button
+                    variant="outline"
+                    className="border-brand-200 text-brand-700 hover:bg-brand-50 hover:border-brand-300 font-medium transition-all duration-200"
+                  >
+                    Sign in
+                  </Button>
                 </Link>
 
-                <div className="h-10 w-px bg-gray-200" />
-
-                <Link
-                  href="/sign-up"
-                  className="px-4 py-2 rounded-lg bg-brand-700 text-white font-semibold text-base shadow flex items-center gap-2 hover:bg-brand-600 hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500"
-                >
-                  Sign up <ArrowRight className="size-5" />
+                <Link href="/sign-up">
+                  <Button className="bg-brand-700 hover:bg-brand-600 text-white font-medium shadow-sm hover:shadow-md transition-all duration-200 group">
+                    Sign up 
+                    <ArrowRight className="ml-2 size-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+                  </Button>
                 </Link>
               </>
             )}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              aria-label="Toggle mobile menu"
+            >
+              <Menu className="size-5" />
+            </Button>
           </div>
         </div>
       </MaxWidthWrapper>
