@@ -59,14 +59,10 @@ export const Navbar = async () => {
   return (
     <nav className="sticky z-[100] h-20 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm transition-all">
       <MaxWidthWrapper>
-        <div className="flex h-20 items-center justify-between">
-          {/* Logo and Brand */}
-          <Link 
-            href="/" 
-            className="flex z-40 font-semibold items-center gap-3 group transition-all duration-200 hover:opacity-90"
-          >
+        <div className="flex h-32 items-center justify-between">
+          <Link href="/" className="flex z-40 font-semibold items-center gap-4">
             <Logo />
-            <span className="text-2xl font-bold tracking-tight text-gray-900 group-hover:text-brand-700 transition-colors duration-200">
+            <span className="text-3xl font-extrabold tracking-tight text-gray-900">
               Notify<span className="text-brand-700">Flow</span>
             </span>
           </Link>
