@@ -1,29 +1,19 @@
 "use client"
 
-import { Heading } from "@/components/heading"
-import { MaxWidthWrapper } from "@/components/max-width-wrapper"
-import { Button } from "@/components/ui/button"
-import { client } from "@/lib/client"
-import { createCheckoutSession } from "@/lib/stripe"
-import { useUser } from "@clerk/nextjs"
-import { useMutation } from "@tanstack/react-query"
-import { CheckIcon } from "lucide-react"
+import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { MaxWidthWrapper } from "@/components/max-width-wrapper"
+import { Heading } from "@/components/heading"
+import { ShinyButton } from "@/components/shiny-button"
+import { Check, Zap, Shield, Target, Rocket, Crown, Star } from "lucide-react"
+import { useUser } from "@clerk/nextjs"
+import { client } from "@/lib/client"
+import { useMutation } from "@tanstack/react-query"
 
-const Page = () => {
-  const { user } = useUser()
+const PricingPage = () => {
   const router = useRouter()
-
-  const INCLUDED_FEATURES = [
-    "50,000 smart-filtered events per month",
-    "Unlimited event categories",
-    "AI-powered insights and analytics",
-    "Multi-platform delivery (Discord, Slack, Teams, Email)",
-    "Advanced webhook integrations",
-    "Real-time dashboard access",
-    "Enterprise-grade security",
-    "Priority support with 24/7 response",
-  ]
+  const { user } = useUser()
+  const [isLoading, setIsLoading] = useState(false)
 
   const { mutate: createCheckoutSession } = useMutation({
     mutationFn: async () => {
@@ -44,160 +34,191 @@ const Page = () => {
   }
 
   return (
-    <div className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 py-24 sm:py-32 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
-      <div className="absolute top-24 left-10 w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full blur-xl opacity-20 animate-pulse pointer-events-none"></div>
+    <div className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24 sm:py-32 overflow-hidden min-h-screen">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 cyber-grid opacity-10 pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-3xl opacity-20 animate-pulse pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full blur-3xl opacity-20 animate-pulse pointer-events-none" style={{animationDelay: '3s'}}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-purple-600/10 to-pink-600/10 rounded-full blur-3xl animate-spin-slow pointer-events-none"></div>
       <div
         className="absolute bottom-32 right-16 w-40 h-40 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full blur-xl opacity-20 animate-pulse pointer-events-none"
         style={{ animationDelay: "2s" }}
       ></div>
 
       <MaxWidthWrapper className="relative z-10">
-        {/* Header Section */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6 justify-center">
-            <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-            Simple Pricing
+        <div className="mx-auto text-center flex flex-col items-center gap-16 w-full">
+          {/* Header Badge */}
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/30 text-purple-100 px-6 py-3 rounded-full text-sm font-medium animate-fade-in">
+            <Crown className="size-4 text-purple-400" />
+            <span>Enterprise Intelligence Platform</span>
+            <Crown className="size-4 text-purple-400" />
           </div>
-          <Heading className="text-center mb-6">
-            Transparent, honest pricing
-          </Heading>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            We believe in simple, fair pricing. Get lifetime access to
-            NotifyFlow's complete feature set with a single payment. No monthly
-            fees, no surprises.
-          </p>
-        </div>
 
-        {/* Pricing Card Section */}
-        <div className="relative mx-auto mt-16 max-w-4xl flex flex-col items-center justify-center">
-          <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl ring-1 ring-gray-200 overflow-hidden flex flex-col lg:flex-row">
-            {/* Premium badge */}
-            <div className="absolute top-6 right-6">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-                🚀 Most Popular
-              </div>
-            </div>
+          {/* Main Heading */}
+          <div className="w-full flex flex-col items-center space-y-4">
+            <Heading>
+              <span className="text-white">Unlock the</span>
+              <br />
+              <span className="relative bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 text-transparent bg-clip-text animate-gradient">
+                Full Power
+              </span>
+              <br />
+              <span className="text-gray-300 text-2xl">of AlertIQ</span>
+            </Heading>
+          </div>
 
-            {/* Left side - Features */}
-            <div className="p-8 sm:p-12 lg:p-16 flex-1 flex flex-col justify-center">
-              <div className="flex items-center gap-4 mb-8 justify-center lg:justify-start">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-2xl">⚡</span>
-                </div>
-                <div>
-                  <h3 className="text-3xl font-heading font-bold tracking-tight text-gray-900">
-                    NotifyFlow Pro
-                  </h3>
-                  <p className="text-blue-600 font-semibold">Lifetime Access</p>
-                </div>
-              </div>
-
-              <p className="text-lg text-gray-600 leading-relaxed mb-10 text-center lg:text-left">
-                Invest once in NotifyFlow and revolutionize how you monitor your
-                business forever. Get AI-powered notifications, deep analytics,
-                and multi-platform delivery that grows with your success.
-              </p>
-
-              <div className="flex items-center gap-x-4 mb-8">
-                <h4 className="text-lg font-bold text-gray-900">
-                  What's included
-                </h4>
-                <div className="h-px flex-auto bg-gradient-to-r from-blue-200 to-purple-200" />
-              </div>
-
-              <ul className="grid grid-cols-1 gap-4 text-gray-700 sm:grid-cols-2 sm:gap-6">
-                {INCLUDED_FEATURES.map((feature, index) => (
-                  <li key={feature} className="flex gap-3 items-center group">
-                    <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <CheckIcon className="h-4 w-4 text-white" />
+          {/* Pricing Card */}
+          <div className="w-full max-w-2xl">
+            <div className="relative group">
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500 animate-gradient"></div>
+              
+              <div className="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl border border-purple-500/30 rounded-3xl shadow-2xl overflow-hidden">
+                {/* Pricing header */}
+                <div className="relative px-8 py-8 text-center bg-gradient-to-br from-purple-600/20 to-pink-600/20 border-b border-purple-500/30">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10"></div>
+                  <div className="relative z-10">
+                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-400 text-slate-900 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                      <Star className="size-4" />
+                      <span>ENTERPRISE TIER</span>
+                      <Star className="size-4" />
                     </div>
-                    <span className="font-medium leading-6">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Right side - Pricing */}
-            <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 sm:p-12 lg:w-96 flex flex-col justify-center items-center">
-              <div className="rounded-2xl bg-white p-10 text-center shadow-xl ring-1 ring-gray-200 w-full flex flex-col justify-center items-center">
-                <div className="mx-auto max-w-xs w-full">
-                  <div className="mb-8">
-                    <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium mb-4 justify-center">
-                      <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                      One-time payment
-                    </div>
-                    <p className="text-base font-semibold text-gray-600 mb-2">
-                      Pay once, own forever
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      No monthly subscriptions
-                    </p>
+                    <h3 className="text-3xl font-bold text-white mb-2">AlertIQ Pro</h3>
+                    <p className="text-gray-300">Complete business intelligence solution</p>
                   </div>
+                </div>
 
-                  <div className="mb-8">
-                    <div className="flex items-baseline justify-center gap-x-2 mb-2">
-                      <span className="text-6xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        $149
-                      </span>
-                      <span className="text-lg font-semibold text-gray-600">
-                        USD
-                      </span>
+                {/* Pricing */}
+                <div className="px-8 py-6 text-center border-b border-purple-500/20">
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-5xl font-black text-white">$49</span>
+                    <div className="flex flex-col">
+                      <span className="text-gray-400 text-sm">/month</span>
+                      <span className="text-purple-400 text-xs">billed annually</span>
                     </div>
-                    <p className="text-sm text-gray-500">
-                      Compare to $29/month = $348/year
-                    </p>
                   </div>
+                  <p className="text-gray-400 text-sm mt-2">Cancel anytime • No setup fees</p>
+                </div>
 
-                  <Button
+                {/* Features */}
+                <div className="px-8 py-8">
+                  <div className="space-y-4">
+                    <div className="text-center mb-6">
+                      <h4 className="text-xl font-semibold text-white mb-2">Everything you need to scale</h4>
+                      <p className="text-gray-400 text-sm">Enterprise-grade features for serious businesses</p>
+                    </div>
+                    
+                    <div className="grid gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
+                          <Check className="size-4 text-white" />
+                        </div>
+                        <span className="text-gray-300">Unlimited real-time alerts & notifications</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
+                          <Check className="size-4 text-white" />
+                        </div>
+                        <span className="text-gray-300">Advanced AI-powered analytics & insights</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
+                          <Check className="size-4 text-white" />
+                        </div>
+                        <span className="text-gray-300">Multi-channel integration (Discord, Slack, Teams)</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
+                          <Check className="size-4 text-white" />
+                        </div>
+                        <span className="text-gray-300">Custom event categories & smart filtering</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
+                          <Check className="size-4 text-white" />
+                        </div>
+                        <span className="text-gray-300">Priority support & dedicated success manager</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
+                          <Check className="size-4 text-white" />
+                        </div>
+                        <span className="text-gray-300">Advanced security & compliance features</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
+                          <Check className="size-4 text-white" />
+                        </div>
+                        <span className="text-gray-300">99.9% uptime SLA guarantee</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="px-8 py-8 bg-gradient-to-br from-purple-600/10 to-pink-600/10 border-t border-purple-500/20">
+                  <ShinyButton
                     onClick={handleGetAccess}
-                    className="w-full h-14 text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                    className="w-full relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 text-lg shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-[1.02] group border-0"
                   >
-                    Get NotifyFlow Pro
-                  </Button>
-
-                  <div className="mt-6 space-y-2">
-                    <p className="text-sm text-gray-600 font-medium">
-                      ✅ Secure payment with Stripe
-                    </p>
-                    <p className="text-sm text-gray-600 font-medium">
-                      ✅ Start monitoring in minutes
-                    </p>
-                    <p className="text-sm text-gray-600 font-medium">
-                      ✅ 30-day money-back guarantee
-                    </p>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="relative flex items-center justify-center gap-3">
+                      <Rocket className="size-5 group-hover:scale-110 transition-transform duration-200" />
+                      <span>Start Your Intelligence Journey</span>
+                      <Zap className="size-5 group-hover:scale-110 transition-transform duration-200" />
+                    </div>
+                  </ShinyButton>
+                  
+                  <div className="flex items-center justify-center gap-4 mt-6 text-sm text-gray-400">
+                    <div className="flex items-center gap-2">
+                      <Shield className="size-4 text-green-400" />
+                      <span>Secure & Encrypted</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Target className="size-4 text-blue-400" />
+                      <span>Instant Setup</span>
+                    </div>
                   </div>
+                  
+                  <p className="text-center text-gray-500 text-xs mt-4">
+                    Join 10,000+ businesses already using AlertIQ to transform their operations
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Trust indicators */}
-          <div className="mt-16 text-center w-full flex flex-col items-center justify-center">
-            <p className="text-sm text-gray-500 mb-6">
-              Trusted by developers and businesses worldwide
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-70 w-full">
-              <div className="flex flex-col items-center gap-1">
-                <div className="text-2xl">🔒</div>
-                <div className="text-sm font-medium text-gray-600">
-                  256-bit SSL
+          {/* Bottom features */}
+          <div className="w-full max-w-4xl">
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center group">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/30 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  <Zap className="size-8 text-purple-400" />
                 </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Lightning Fast</h3>
+                <p className="text-gray-400">Real-time alerts delivered in milliseconds</p>
               </div>
-              <div className="w-px h-8 bg-gray-300"></div>
-              <div className="flex flex-col items-center gap-1">
-                <div className="text-2xl">💳</div>
-                <div className="text-sm font-medium text-gray-600">
-                  Stripe Secure
+              
+              <div className="text-center group">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/30 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  <Shield className="size-8 text-blue-400" />
                 </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Enterprise Security</h3>
+                <p className="text-gray-400">Bank-level security with end-to-end encryption</p>
               </div>
-              <div className="w-px h-8 bg-gray-300"></div>
-              <div className="flex flex-col items-center gap-1">
-                <div className="text-2xl">🛡️</div>
-                <div className="text-sm font-medium text-gray-600">
-                  GDPR Compliant
+              
+              <div className="text-center group">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/30 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-200">
+                  <Target className="size-8 text-green-400" />
                 </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Precision Targeting</h3>
+                <p className="text-gray-400">AI-powered smart filtering and categorization</p>
               </div>
             </div>
           </div>
@@ -207,4 +228,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default PricingPage

@@ -22,10 +22,7 @@ export const baseClient = hc<AppType>(getBaseUrl(), {
     const response = await fetch(input, { ...init, cache: "no-store" })
 
     if (!response.ok) {
-      throw new HTTPException(response.status as StatusCode, {
-        message: response.statusText,
-        res: response,
-      })
+      throw new Error(`HTTP Error: ${response.status} ${response.statusText}`)
     }
 
     const contentType = response.headers.get("Content-Type")
