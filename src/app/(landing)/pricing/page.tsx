@@ -63,7 +63,7 @@ const PricingPage = () => {
                 Full Power
               </span>
               <br />
-              <span className="text-gray-300 text-2xl">of AlertIQ</span>
+              <span className="text-gray-300 text-2xl">of NotifyFlow</span>
             </Heading>
           </div>
 
@@ -83,7 +83,7 @@ const PricingPage = () => {
                       <span>ENTERPRISE TIER</span>
                       <Star className="size-4" />
                     </div>
-                    <h3 className="text-3xl font-bold text-white mb-2">AlertIQ Pro</h3>
+                    <h3 className="text-3xl font-bold text-white mb-2">NotifyFlow Pro</h3>
                     <p className="text-gray-300">Complete business intelligence solution</p>
                   </div>
                 </div>
@@ -187,7 +187,7 @@ const PricingPage = () => {
                   </div>
                   
                   <p className="text-center text-gray-500 text-xs mt-4">
-                    Join 10,000+ businesses already using AlertIQ to transform their operations
+                    Join 500+ businesses already using NotifyFlow to transform their operations
                   </p>
                 </div>
               </div>

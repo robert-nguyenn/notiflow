@@ -113,20 +113,20 @@ const Page = () => {
           <div className="mt-32 pt-16 border-t border-white/20 w-full">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center w-full">
               <div className="space-y-3 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
-                <div className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">500K+</div>
-                <div className="text-sm text-gray-300">Enterprise Users</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">500+</div>
+                <div className="text-sm text-gray-300">Beta Users</div>
               </div>
               <div className="space-y-3 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
-                <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">99.99%</div>
-                <div className="text-sm text-gray-300">Uptime SLA</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">99.5%</div>
+                <div className="text-sm text-gray-300">Uptime</div>
               </div>
               <div className="space-y-3 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
-                <div className="text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 text-transparent bg-clip-text">1B+</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 text-transparent bg-clip-text">50K+</div>
                 <div className="text-sm text-gray-300">Events Processed</div>
               </div>
               <div className="space-y-3 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
-                <div className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 text-transparent bg-clip-text">&lt;50ms</div>
-                <div className="text-sm text-gray-300">Global Latency</div>
+                <div className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 text-transparent bg-clip-text">&lt;200ms</div>
+                <div className="text-sm text-gray-300">Response Time</div>
               </div>
             </div>
           </div>
@@ -142,8 +142,8 @@ const Page = () => {
                 <AnimatedList>
                   <DiscordMessage
                     avatarSrc="/brand-asset-profile-picture.png"
-                    avatarAlt="AlertIQ Avatar"
-                    username="AlertIQ"
+                    avatarAlt="NotifyFlow Avatar"
+                    username="NotifyFlow"
                     timestamp="Today at 3:42PM"
                     badgeText="Revenue"
                     badgeColor="#10b981"
@@ -156,8 +156,8 @@ const Page = () => {
                   />
                   <DiscordMessage
                     avatarSrc="/brand-asset-profile-picture.png"
-                    avatarAlt="AlertIQ Avatar"
-                    username="AlertIQ"
+                    avatarAlt="NotifyFlow Avatar"
+                    username="NotifyFlow"
                     timestamp="Today at 3:15PM"
                     badgeText="Enterprise"
                     badgeColor="#8b5cf6"
@@ -171,8 +171,8 @@ const Page = () => {
                   />
                   <DiscordMessage
                     avatarSrc="/brand-asset-profile-picture.png"
-                    avatarAlt="AlertIQ Avatar"
-                    username="AlertIQ"
+                    avatarAlt="NotifyFlow Avatar"
+                    username="NotifyFlow"
                     timestamp="Today at 2:58PM"
                     badgeText="Security"
                     badgeColor="#ef4444"
@@ -185,8 +185,8 @@ const Page = () => {
                   />
                   <DiscordMessage
                     avatarSrc="/brand-asset-profile-picture.png"
-                    avatarAlt="AlertIQ Avatar"
-                    username="AlertIQ"
+                    avatarAlt="NotifyFlow Avatar"
+                    username="NotifyFlow"
                     timestamp="Today at 2:33PM"
                     badgeText="Performance"
                     badgeColor="#3b82f6"
@@ -242,22 +242,22 @@ const Page = () => {
                   Our quantum AI algorithms analyze your business patterns in real-time, providing predictive insights and automated responses that anticipate your needs before they arise.
                 </p>
                 
-                <div className="bg-slate-900/50 backdrop-blur-sm border border-white/5 p-6 rounded-2xl">
+                  <div className="bg-slate-900/50 backdrop-blur-sm border border-white/5 p-6 rounded-2xl">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm font-medium text-gray-400">INTELLIGENCE SCORE</span>
-                    <span className="text-2xl font-bold text-purple-400">98%</span>
+                    <span className="text-2xl font-bold text-purple-400">85%</span>
                   </div>
                   <div className="w-full bg-slate-700 rounded-full h-3 mb-4">
-                    <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full" style={{width: '98%'}}></div>
+                    <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full" style={{width: '85%'}}></div>
                   </div>
                   <div className="space-y-2 text-sm text-gray-400">
                     <div className="flex justify-between">
                       <span>Pattern Recognition</span>
-                      <span className="text-green-400">✓ Advanced</span>
+                      <span className="text-green-400">✓ Active</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Predictive Analytics</span>
-                      <span className="text-green-400">✓ Quantum-level</span>
+                      <span className="text-green-400">✓ Learning</span>
                     </div>
                   </div>
                 </div>
@@ -344,7 +344,7 @@ const Page = () => {
                   <Zap className="size-6 text-white" />
                 </div>
                 <span className="text-2xl font-black text-white">
-                  Alert<span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">IQ</span>
+                  Notify<span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">Flow</span>
                 </span>
               </div>
               <p className="text-gray-400 text-lg max-w-md leading-relaxed mb-6">
@@ -352,51 +352,49 @@ const Page = () => {
                 analyze, and respond to critical business events in real-time.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-purple-600 rounded-lg flex items-center justify-center transition-all duration-200 group">
-                  <span className="text-gray-400 group-hover:text-white">𝕏</span>
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-200 group">
+                <a href="mailto:hello@notifyflow.com" className="w-10 h-10 bg-white/10 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-all duration-200 group" title="Email Us">
                   <span className="text-gray-400 group-hover:text-white">📧</span>
                 </a>
-                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-all duration-200 group">
-                  <span className="text-gray-400 group-hover:text-white">💼</span>
+                <a href="/contact" className="w-10 h-10 bg-white/10 hover:bg-green-600 rounded-lg flex items-center justify-center transition-all duration-200 group" title="Contact Support">
+                  <span className="text-gray-400 group-hover:text-white">�</span>
+                </a>
+                <a href="https://github.com/robert-nguyenn/notificationpanda" className="w-10 h-10 bg-white/10 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-all duration-200 group" title="GitHub Repository">
+                  <span className="text-gray-400 group-hover:text-white">�</span>
                 </a>
               </div>
             </div>
 
-            {/* Product */}
+            {/* Platform */}
             <div>
               <h3 className="font-bold text-white mb-6">Platform</h3>
               <ul className="space-y-3 text-gray-400">
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">AI Analytics</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">Real-time Monitoring</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">Enterprise API</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">Integrations</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">Security Center</a></li>
+                <li><a href="/pricing" className="hover:text-purple-400 transition-colors duration-200">Pricing</a></li>
+                <li><a href="/compliance" className="hover:text-purple-400 transition-colors duration-200">Security & Compliance</a></li>
+                <li><a href="/contact" className="hover:text-purple-400 transition-colors duration-200">API Documentation</a></li>
+                <li><a href="/dashboard" className="hover:text-purple-400 transition-colors duration-200">Dashboard</a></li>
               </ul>
             </div>
 
-            {/* Company */}
+            {/* Support */}
             <div>
-              <h3 className="font-bold text-white mb-6">Enterprise</h3>
+              <h3 className="font-bold text-white mb-6">Support</h3>
               <ul className="space-y-3 text-gray-400">
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">About AlertIQ</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">Success Stories</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">Leadership</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">Contact Sales</a></li>
-                <li><a href="#" className="hover:text-purple-400 transition-colors duration-200">Support</a></li>
+                <li><a href="/contact" className="hover:text-purple-400 transition-colors duration-200">Contact Sales</a></li>
+                <li><a href="/contact" className="hover:text-purple-400 transition-colors duration-200">Technical Support</a></li>
+                <li><a href="mailto:hello@notifyflow.com" className="hover:text-purple-400 transition-colors duration-200">Email Us</a></li>
+                <li><a href="/pricing" className="hover:text-purple-400 transition-colors duration-200">Upgrade Account</a></li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-white/10 py-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2025 AlertIQ Technologies Inc. All rights reserved. Built for the future of enterprise intelligence.
+              © 2025 NotifyFlow Technologies Inc. All rights reserved. Built for the future of enterprise intelligence.
             </p>
             <div className="flex space-x-8 text-sm text-gray-400 mt-4 md:mt-0">
-              <a href="#" className="hover:text-purple-400 transition-colors duration-200">Privacy & Security</a>
-              <a href="#" className="hover:text-purple-400 transition-colors duration-200">Terms & Conditions</a>
-              <a href="#" className="hover:text-purple-400 transition-colors duration-200">Compliance</a>
+              <a href="/privacy" className="hover:text-purple-400 transition-colors duration-200">Privacy Policy</a>
+              <a href="/terms" className="hover:text-purple-400 transition-colors duration-200">Terms of Service</a>
+              <a href="/compliance" className="hover:text-purple-400 transition-colors duration-200">Compliance</a>
             </div>
           </div>
         </MaxWidthWrapper>

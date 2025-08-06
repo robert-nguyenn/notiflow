@@ -15,7 +15,7 @@ const Logo = () => (
     xmlns="http://www.w3.org/2000/svg"
     className="transition-transform duration-200 hover:scale-105"
     role="img"
-    aria-label="AlertIQ Logo"
+    aria-label="NotifyFlow Logo"
   >
     <rect
       x="2"
@@ -91,7 +91,7 @@ export const Navbar = async () => {
           <Link href="/" className="flex z-40 font-semibold items-center gap-4 group">
             <Logo />
             <span className="text-2xl font-black tracking-tight text-white group-hover:text-purple-300 transition-colors duration-200">
-              Alert<span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">IQ</span>
+              Notify<span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">Flow</span>
             </span>
           </Link>
 

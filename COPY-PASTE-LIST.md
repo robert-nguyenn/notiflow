@@ -198,7 +198,7 @@ brand: {
 
 ### DASHBOARD CODE SNIPPET
 ```
-`await fetch('https://pingpanda.io/api/events', {
+`await fetch('https://notifyflow.com/api/events', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer YOUR_API_KEY'
