@@ -32,7 +32,7 @@ export const DashboardPageContent = () => {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["user-event-categories"] })
         setDeletingCategory(null)
-      },
+      }, //fix
     }
   )
 
@@ -49,80 +49,101 @@ export const DashboardPageContent = () => {
   }
 
   return (
-    <>
+    <div className="space-y-8">
+      {/* Enhanced Testing Banner */}
+      <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-6 text-white">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-bold mb-2">🚀 Enhanced Notification System</h2>
+            <p className="text-blue-100 mb-4">
+              Test the new advanced features: severity levels, rich metadata, multi-channel routing, and more!
+            </p>
+          </div>
+          <Link
+            href="/dashboard/enhanced-testing"
+            className={buttonVariants({
+              variant: "secondary",
+              className: "flex items-center gap-2",
+            })}
+          >
+            Try New Features <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </div>
+
       <ul className="grid max-w-6xl grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {categories.map((category) => (
           <li
             key={category.id}
             className="relative group z-10 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <div className="absolute z-0 inset-px rounded-lg bg-white" />
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+              <div className="p-6">
+                <div className="flex items-center gap-4 mb-6">
+                  <div
+                    className="size-12 rounded-xl flex items-center justify-center border border-gray-200"
+                    style={{
+                      backgroundColor: category.color
+                        ? `#${category.color.toString(16).padStart(6, "0")}`
+                        : "#f3f4f6",
+                    }}
+                  >
+                    <span className="text-lg">{category.emoji || "📂"}</span>
+                  </div>
 
-            <div className="pointer-events-none z-0 absolute inset-px rounded-lg shadow-sm transition-all duration-300 group-hover:shadow-md ring-1 ring-black/5" />
-
-            <div className="relative p-6 z-10">
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="size-12 rounded-full"
-                  style={{
-                    backgroundColor: category.color
-                      ? `#${category.color.toString(16).padStart(6, "0")}`
-                      : "#f3f4f6",
-                  }}
-                />
-
-                <div>
-                  <h3 className="text-lg/7 font-medium tracking-tight text-gray-950">
-                    {category.emoji || "📂"} {category.name}
-                  </h3>
-                  <p className="text-sm/6 text-gray-600">
-                    {format(category.createdAt, "MMM d, yyyy")}
-                  </p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-semibold text-gray-900 truncate">
+                      {category.name}
+                    </h3>
+                    <p className="text-sm text-gray-500">
+                      Created {format(category.createdAt, "MMM d, yyyy")}
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center text-sm/5 text-gray-600">
-                  <Clock className="size-4 mr-2 text-brand-500" />
-                  <span className="font-medium">Last ping:</span>
-                  <span className="ml-1">
-                    {category.lastPing
-                      ? formatDistanceToNow(category.lastPing) + " ago"
-                      : "Never"}
-                  </span>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Clock className="size-4 mr-3 text-purple-600" />
+                    <span className="font-medium mr-2">Last ping:</span>
+                    <span>
+                      {category.lastPing
+                        ? formatDistanceToNow(category.lastPing) + " ago"
+                        : "Never"}
+                    </span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Database className="size-4 mr-3 text-blue-600" />
+                    <span className="font-medium mr-2">Unique fields:</span>
+                    <span className="font-semibold">{category.uniqueFieldCount || 0}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <BarChart2 className="size-4 mr-3 text-green-600" />
+                    <span className="font-medium mr-2">Events this month:</span>
+                    <span className="font-semibold">{category.eventsCount || 0}</span>
+                  </div>
                 </div>
-                <div className="flex items-center text-sm/5 text-gray-600">
-                  <Database className="size-4 mr-2 text-brand-500" />
-                  <span className="font-medium">Unique fields:</span>
-                  <span className="ml-1">{category.uniqueFieldCount || 0}</span>
-                </div>
-                <div className="flex items-center text-sm/5 text-gray-600">
-                  <BarChart2 className="size-4 mr-2 text-brand-500" />
-                  <span className="font-medium">Events this month:</span>
-                  <span className="ml-1">{category.eventsCount || 0}</span>
-                </div>
-              </div>
 
-              <div className="flex items-center justify-between mt-4">
-                <Link
-                  href={`/dashboard/category/${category.name}`}
-                  className={buttonVariants({
-                    variant: "outline",
-                    size: "sm",
-                    className: "flex items-center gap-2 text-sm",
-                  })}
-                >
-                  View all <ArrowRight className="size-4" />
-                </Link>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-gray-500 hover:text-red-600 transition-colors"
-                  aria-label={`Delete ${category.name} category`}
-                  onClick={() => setDeletingCategory(category.name)}
-                >
-                  <Trash2 className="size-5" />
-                </Button>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <Link
+                    href={`/dashboard/category/${category.name}`}
+                    className={buttonVariants({
+                      variant: "outline",
+                      size: "sm",
+                      className: "flex items-center gap-2 text-sm",
+                    })}
+                  >
+                    View all <ArrowRight className="size-4" />
+                  </Link>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-gray-400 hover:text-red-600 hover:bg-red-50 transition-all duration-200"
+                    aria-label={`Delete ${category.name} category`}
+                    onClick={() => setDeletingCategory(category.name)}
+                  >
+                    <Trash2 className="size-4" />
+                  </Button>
+                </div>
               </div>
             </div>
           </li>
@@ -135,18 +156,24 @@ export const DashboardPageContent = () => {
         className="max-w-md p-8"
       >
         <div className="space-y-6">
-          <div>
-            <h2 className="text-lg/7 font-medium tracking-tight text-gray-950">
+          <div className="text-center">
+            <div className="mx-auto flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
+              <Trash2 className="w-8 h-8 text-red-600" />
+            </div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">
               Delete Category
             </h2>
-            <p className="text-sm/6 text-gray-600">
+            <p className="text-sm text-gray-600">
               Are you sure you want to delete the category "{deletingCategory}"?
-              This action cannot be undone.
+              This action cannot be undone and all associated data will be lost.
             </p>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-4 border-t">
-            <Button variant="outline" onClick={() => setDeletingCategory(null)}>
+          <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
+            <Button 
+              variant="outline" 
+              onClick={() => setDeletingCategory(null)}
+            >
               Cancel
             </Button>
             <Button
@@ -156,11 +183,11 @@ export const DashboardPageContent = () => {
               }
               disabled={isDeletingCategory}
             >
-              {isDeletingCategory ? "Deleting..." : "Delete"}
+              {isDeletingCategory ? "Deleting..." : "Delete Category"}
             </Button>
           </div>
         </div>
       </Modal>
-    </>
+    </div>
   )
 }

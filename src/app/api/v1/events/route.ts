@@ -1,17 +1,9 @@
 import { FREE_QUOTA, PRO_QUOTA } from "@/config"
 import { db } from "@/db"
-import { DiscordClient } from "@/lib/discord-client"
-import { CATEGORY_NAME_VALIDATOR } from "@/lib/validators/category-validator"
+import { NotificationService } from "@/lib/notification-service"
+import { CREATE_EVENT_VALIDATOR } from "@/lib/validators/event-validator"
 import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
-
-const REQUEST_VALIDATOR = z
-  .object({
-    category: CATEGORY_NAME_VALIDATOR,
-    fields: z.record(z.string().or(z.number()).or(z.boolean())).optional(),
-    description: z.string().optional(),
-  })
-  .strict()
 
 export const POST = async (req: NextRequest) => {
   try {
@@ -54,7 +46,7 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    // ACTUAL LOGIC
+    // QUOTA CHECK
     const currentData = new Date()
     const currentMonth = currentData.getMonth() + 1
     const currentYear = currentData.getFullYear()
@@ -82,10 +74,7 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    const discord = new DiscordClient(process.env.DISCORD_BOT_TOKEN)
-
-    const dmChannel = await discord.createDM(user.discordId)
-
+    // PARSE REQUEST DATA
     let requestData: unknown
 
     try {
@@ -99,7 +88,7 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    const validationResult = REQUEST_VALIDATOR.parse(requestData)
+    const validationResult = CREATE_EVENT_VALIDATOR.parse(requestData)
 
     const category = user.EventCategories.find(
       (cat) => cat.name === validationResult.category
@@ -114,42 +103,59 @@ export const POST = async (req: NextRequest) => {
       )
     }
 
-    const eventData = {
-      title: `${category.emoji || "🔔"} ${
-        category.name.charAt(0).toUpperCase() + category.name.slice(1)
-      }`,
-      description:
-        validationResult.description ||
-        `A new ${category.name} event has occurred!`,
-      color: category.color,
-      timestamp: new Date().toISOString(),
-      fields: Object.entries(validationResult.fields || {}).map(
-        ([key, value]) => {
-          return {
-            name: key,
-            value: String(value),
-            inline: true,
-          }
-        }
-      ),
-    }
-
+    // CREATE EVENT (using basic schema for now to avoid Prisma client issues)
     const event = await db.event.create({
       data: {
         name: category.name,
-        formattedMessage: `${eventData.title}\n\n${eventData.description}`,
+        formattedMessage: validationResult.description ||
+          `A new ${category.name} event has occurred!`,
         userId: user.id,
         fields: validationResult.fields || {},
         eventCategoryId: category.id,
       },
+      include: {
+        EventCategory: {
+          select: {
+            name: true,
+            emoji: true,
+            color: true,
+          },
+        },
+      },
     })
 
+    // Add enhanced fields as metadata for now
+    const enhancedEvent = {
+      ...event,
+      severity: validationResult.severity,
+      priority: validationResult.priority,
+      source: validationResult.source,
+      correlationId: validationResult.correlationId,
+      tags: validationResult.tags,
+      metadata: validationResult.metadata,
+    }
+
+    // PROCESS NOTIFICATIONS WITH ENHANCED SERVICE
+    const notificationService = new NotificationService()
+    
     try {
-      await discord.sendEmbed(dmChannel.id, eventData)
+      const results = await notificationService.processEvent({
+        event: enhancedEvent as any,
+        user: {
+          id: user.id,
+          email: user.email,
+          discordId: user.discordId,
+        },
+      })
+
+      // Update event delivery status based on results
+      const allSucceeded = results.every(r => r.success)
 
       await db.event.update({
         where: { id: event.id },
-        data: { deliveryStatus: "DELIVERED" },
+        data: { 
+          deliveryStatus: allSucceeded ? "DELIVERED" : "FAILED",
+        },
       })
 
       await db.quota.upsert({
@@ -162,32 +168,58 @@ export const POST = async (req: NextRequest) => {
           count: 1,
         },
       })
-    } catch (err) {
+
+      return NextResponse.json({
+        message: "Event processed successfully",
+        eventId: event.id,
+        notifications: results.map(r => ({
+          success: r.success,
+          notificationId: r.notificationId,
+          error: r.error,
+          duration: r.duration,
+        })),
+        metrics: {
+          totalProcessingTime: results.reduce((sum, r) => sum + r.duration, 0),
+          successfulNotifications: results.filter(r => r.success).length,
+          totalNotifications: results.length,
+        },
+        // Include enhanced data in response for testing
+        enhancedData: {
+          severity: validationResult.severity,
+          priority: validationResult.priority,
+          source: validationResult.source,
+          tags: validationResult.tags,
+          correlationId: validationResult.correlationId,
+        },
+      })
+    } catch (notificationError) {
+      console.error("Notification processing error:", notificationError)
+
       await db.event.update({
         where: { id: event.id },
         data: { deliveryStatus: "FAILED" },
       })
 
-      console.log(err)
-
       return NextResponse.json(
         {
-          message: "Error processing event",
+          message: "Event created but notification processing failed",
           eventId: event.id,
+          error: notificationError instanceof Error ? notificationError.message : "Unknown error",
         },
         { status: 500 }
       )
     }
-
-    return NextResponse.json({
-      message: "Event processed successfully",
-      eventId: event.id,
-    })
   } catch (err) {
-    console.error(err)
+    console.error("API Error:", err)
 
     if (err instanceof z.ZodError) {
-      return NextResponse.json({ message: err.message }, { status: 422 })
+      return NextResponse.json({ 
+        message: "Validation error", 
+        errors: err.errors.map(e => ({
+          field: e.path.join('.'),
+          message: e.message,
+        }))
+      }, { status: 422 })
     }
 
     return NextResponse.json(

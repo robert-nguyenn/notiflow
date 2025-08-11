@@ -16,7 +16,7 @@ const eb_garamond = EB_Garamond({
 export const metadata: Metadata = {
   title: "NotifyFlow - Smart Business Alerts",
   description: "AI-powered business notifications for Discord, Slack, and more",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/logo.png" }],
 }
 
 export default function RootLayout({
@@ -27,8 +27,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className={cn(inter.variable, eb_garamond.variable)}>
-        <body className="min-h-[calc(100vh-1px)] flex flex-col font-sans bg-brand-50 text-brand-950 antialiased">
-          <main className="relative flex-1 flex flex-col">
+        <body className="min-h-screen flex flex-col font-sans bg-white text-gray-900 antialiased">
+          <main className="flex-1 flex flex-col">
             <Providers>{children}</Providers>
           </main>
         </body>

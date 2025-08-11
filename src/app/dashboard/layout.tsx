@@ -8,6 +8,7 @@ import { Gem, Home, Key, LucideIcon, Menu, Settings, X } from "lucide-react"
 import Link from "next/link"
 import { PropsWithChildren, useState } from "react"
 import { Drawer } from "vaul"
+import Image from "next/image"
 
 interface SidebarItem {
   href: string
@@ -44,32 +45,41 @@ const SIDEBAR_ITEMS: SidebarCategory[] = [
 
 const Sidebar = ({ onClose }: { onClose?: () => void }) => {
   return (
-    <div className="space-y-4 md:space-y-6 relative z-20 flex flex-col h-full">
+    <div className="space-y-8 relative z-20 flex flex-col h-full">
       {/* logo */}
-      <p className="hidden sm:block text-lg/7 font-semibold text-brand-900">
-        Ping<span className="text-brand-700">Panda</span>
-      </p>
+      <Link href="/" className="flex items-center gap-3 group px-2">
+        <Image
+          src="/logo.png"
+          alt="NotifyFlow Logo"
+          width={32}
+          height={32}
+          className="transition-transform duration-200 group-hover:scale-105"
+        />
+        <span className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors duration-200">
+          Notify<span className="bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">Flow</span>
+        </span>
+      </Link>
 
       {/* navigation items */}
       <div className="flex-grow">
-        <ul>
+        <ul className="space-y-6">
           {SIDEBAR_ITEMS.map(({ category, items }) => (
-            <li key={category} className="mb-4 md:mb-8">
-              <p className="text-xs font-medium leading-6 text-zinc-500">
+            <li key={category}>
+              <p className="text-xs font-semibold leading-6 text-gray-500 uppercase tracking-wider px-3">
                 {category}
               </p>
-              <div className="-mx-2 flex flex-1 flex-col">
+              <div className="mt-3 space-y-1">
                 {items.map((item, i) => (
                   <Link
                     key={i}
                     href={item.href}
                     className={cn(
                       buttonVariants({ variant: "ghost" }),
-                      "w-full justify-start group flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium leading-6 text-zinc-700 hover:bg-gray-50 transition"
+                      "w-full justify-start group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200"
                     )}
                     onClick={onClose}
                   >
-                    <item.icon className="size-4 text-zinc-500 group-hover:text-zinc-700" />
+                    <item.icon className="size-5 text-gray-500 group-hover:text-purple-600 transition-colors duration-200" />
                     {item.text}
                   </Link>
                 ))}
@@ -79,14 +89,13 @@ const Sidebar = ({ onClose }: { onClose?: () => void }) => {
         </ul>
       </div>
 
-      <div className="flex flex-col">
-        <hr className="my-4 md:my-6 w-full h-px bg-gray-100" />
-
+      <div className="flex flex-col border-t border-gray-200 pt-6">
         <UserButton
           showName
           appearance={{
             elements: {
               userButtonBox: "flex-row-reverse",
+              userButtonTrigger: "hover:bg-gray-100 transition-colors duration-200 rounded-xl p-2",
             },
           }}
         />
@@ -101,28 +110,36 @@ const Layout = ({ children }: PropsWithChildren) => {
   return (
     <div className="relative h-screen flex flex-col md:flex-row bg-white overflow-hidden">
       {/* sidebar for desktop */}
-      <div className="hidden md:block w-64 lg:w-80 border-r border-gray-100 p-6 h-full text-brand-900 relative z-10">
+      <div className="hidden md:block w-64 lg:w-72 bg-white border-r border-gray-200 p-6 h-full relative z-10">
         <Sidebar />
       </div>
 
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* mobile header */}
-        <div className="md:hidden flex items-center justify-between p-4 border-b border-gray-200">
-          <p className="text-lg/7 font-semibold text-brand-900">
-            Ping<span className="text-brand-700">Panda</span>
-          </p>
+        <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200">
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/logo.png"
+              alt="NotifyFlow Logo"
+              width={28}
+              height={28}
+            />
+            <span className="text-lg font-bold text-gray-900">
+              Notify<span className="bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">Flow</span>
+            </span>
+          </Link>
           <button
             onClick={() => setIsDrawerOpen(true)}
-            className="text-gray-500 hover:text-gray-600"
+            className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg transition-colors duration-200"
           >
             <Menu className="size-6" />
           </button>
         </div>
 
         {/* main content area */}
-        <div className="flex-1 overflow-y-auto bg-gray-50 shadow-md p-4 md:p-6 relative z-10">
+        <div className="flex-1 flex flex-col overflow-y-auto bg-gray-50 p-4 md:p-6 relative z-10">
           <div className="relative min-h-full flex flex-col">
-            <div className="h-full flex flex-col flex-1 space-y-4">
+            <div className="h-full flex flex-col flex-1 space-y-6">
               {children}
             </div>
           </div>
@@ -133,19 +150,28 @@ const Layout = ({ children }: PropsWithChildren) => {
           showModal={isDrawerOpen}
           setShowModal={setIsDrawerOpen}
         >
-          <div className="flex justify-between items-center mb-4">
-            <p className="text-lg/7 font-semibold text-brand-900">
-              Ping<span className="text-brand-700">Panda</span>
-            </p>
+          <div className="flex justify-between items-center mb-6">
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="NotifyFlow Logo"
+                width={28}
+                height={28}
+              />
+              <span className="text-lg font-bold text-gray-900">
+                Notify<span className="bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">Flow</span>
+              </span>
+            </Link>
             <button
               aria-label="Close modal"
               onClick={() => setIsDrawerOpen(false)}
+              className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg transition-colors duration-200"
             >
-              <X className="size-6" />
+              <X className="size-5" />
             </button>
           </div>
 
-          <Sidebar />
+          <Sidebar onClose={() => setIsDrawerOpen(false)} />
         </Modal>
       </div>
     </div>

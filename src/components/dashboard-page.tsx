@@ -23,23 +23,26 @@ export const DashboardPage = ({
 
   return (
     <section className="flex-1 h-full w-full flex flex-col">
-      <div className="w-full p-6 sm:p-8 flex justify-between border-b border-gray-200">
+      <div className="w-full p-6 sm:p-8 flex justify-between bg-white border-b border-gray-200">
         <div className="w-full flex flex-col sm:flex-row items-start sm:items-center gap-6">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6">
             {hideBackButton ? null : (
               <Button
                 onClick={() => router.push("/dashboard")}
-                className="w-fit bg-white"
+                className="w-fit bg-white border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all duration-200"
                 variant="outline"
               >
                 <ArrowLeft className="size-4" />
               </Button>
             )}
 
-            <Heading>{title}</Heading>
+            <div className="space-y-1">
+              <Heading className="text-gray-900">{title}</Heading>
+              <p className="text-sm text-gray-600">Manage your notifications and settings</p>
+            </div>
           </div>
 
-          {cta ? <div className="w-full">{cta}</div> : null}
+          {cta ? <div className="w-full sm:w-auto">{cta}</div> : null}
         </div>
       </div>
 

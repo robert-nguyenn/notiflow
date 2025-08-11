@@ -6,6 +6,9 @@ const isProtectedRoute = createRouteMatcher([
 
 export default clerkMiddleware((auth, req) => {
   if (isProtectedRoute(req)) auth().protect()
+}, {
+  // Development clock skew tolerance
+  clockSkewInMs: 300000, // 5 minutes tolerance for development
 })
 
 export const config = {
