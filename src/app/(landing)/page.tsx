@@ -393,7 +393,7 @@ const Page = () => {
               <ul className="space-y-3 text-gray-600">
                 <li><a href="/contact" className="hover:text-purple-600 transition-colors duration-200">Contact Sales</a></li>
                 <li><a href="/contact" className="hover:text-purple-600 transition-colors duration-200">Technical Support</a></li>
-                <li><a href="mailto:hello@notifyflow.com" className="hover:text-purple-600 transition-colors duration-200">Email Us</a></li>
+                <li><a href="mailto:robert.nguyenanh@gmail.com" className="hover:text-purple-600 transition-colors duration-200">Email Us</a></li>
                 <li><a href="/pricing" className="hover:text-purple-600 transition-colors duration-200">Upgrade Account</a></li>
               </ul>
             </div>

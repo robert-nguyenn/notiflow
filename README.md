@@ -1,6 +1,10 @@
 # 🐼 NotifyFlow - Enterprise Event Monitoring S## ✨ Key Features
 
-- 🤖 **Smart Event Processing** - AI-powered filtering and categorization
+- 🤖 **Smart🔗 **Live Demo**: [notifyflow-demo.vercel.app](https://notifyflow-demo.vercel.app)  
+📧 **Email**: robert.nguyenanh@gmail.com  
+💼 **LinkedIn**: [linkedin.com/in/robert-nguyenn](https://www.linkedin.com/in/robert-nguyenn/)  
+🐙 **GitHub**: [github.com/robert-nguyenn](https://github.com/robert-nguyenn)  
+📱 **Phone**: +1-859-691-8194ent Processing** - AI-powered filtering and categorization
 - 🌐 **Multi-Platform Delivery** - Discord, Slack, Teams, Email notifications  
 - 📊 **Analytics Dashboard** - Real-time metrics and trend analysis
 - 💳 **Subscription Management** - Stripe integration with usage-based billing
@@ -66,8 +70,8 @@ A sophisticated event monitoring SaaS platform built to demonstrate enterprise-l
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/robert-nguyenn/notificationpanda.git
-cd notificationpanda
+git clone https://github.com/your-username/notifyflow.git
+cd notifyflow
 npm install
 cp .env.example .env.local  # Fill in your API keys
 npx prisma generate && npx prisma db push
@@ -80,7 +84,29 @@ npm run dev
 � **Email**: your.email@example.com  
 💼 **LinkedIn**: [Connect with me](https://linkedin.com/in/yourprofile)
 
+## 💼 Why This Project for Big Tech Internships
+
+This project demonstrates the exact skills that top tech companies value:
+
+### **Technical Excellence**
+- **System Design**: Event-driven architecture with real-time processing
+- **Scale Considerations**: Database optimization, rate limiting, quota management
+- **Security**: OAuth 2.0, API authentication, data encryption
+- **Performance**: Efficient database queries, caching strategies
+
+### **Full-Stack Proficiency**
+- **Frontend**: Modern React patterns, responsive design, state management
+- **Backend**: RESTful APIs, database design, webhook processing
+- **DevOps**: Environment management, deployment, monitoring
+
+### **Business Understanding**
+- **Product Thinking**: SaaS subscription model, user experience design
+- **Analytics**: Event tracking, usage metrics, billing integration
+- **Integration**: Third-party APIs, multi-platform support
+
 ---
+
+Built with attention to production-ready code quality, comprehensive error handling, and scalable architecture principles that mirror enterprise development practices.
 
 ##  License
 
