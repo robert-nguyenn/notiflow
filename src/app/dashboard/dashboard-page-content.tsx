@@ -49,7 +49,28 @@ export const DashboardPageContent = () => {
   }
 
   return (
-    <>
+    <div className="space-y-8">
+      {/* Enhanced Testing Banner */}
+      <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-6 text-white">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-bold mb-2">🚀 Enhanced Notification System</h2>
+            <p className="text-blue-100 mb-4">
+              Test the new advanced features: severity levels, rich metadata, multi-channel routing, and more!
+            </p>
+          </div>
+          <Link
+            href="/dashboard/enhanced-testing"
+            className={buttonVariants({
+              variant: "secondary",
+              className: "flex items-center gap-2",
+            })}
+          >
+            Try New Features <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </div>
+
       <ul className="grid max-w-6xl grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {categories.map((category) => (
           <li
@@ -167,6 +188,6 @@ export const DashboardPageContent = () => {
           </div>
         </div>
       </Modal>
-    </>
+    </div>
   )
 }
