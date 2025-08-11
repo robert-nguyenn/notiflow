@@ -26,11 +26,7 @@ const PricingPage = () => {
   })
 
   const handleGetAccess = () => {
-    if (user) {
-      createCheckoutSession()
-    } else {
-      router.push("/sign-up?intent=upgrade")
-    }
+    router.push("/sign-up?intent=upgrade")
   }
 
   return (
