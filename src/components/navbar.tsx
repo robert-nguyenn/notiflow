@@ -4,51 +4,17 @@ import { SignOutButton } from "@clerk/nextjs"
 import { ArrowRight, Menu, Star } from "lucide-react"
 import { currentUser } from "@clerk/nextjs/server"
 import { Button } from "./ui/button"
+import Image from "next/image"
 
-// Clean, modern logo
+// Logo component using the logo.png image
 const Logo = () => (
-  <svg
-    width="40"
-    height="40"
-    viewBox="0 0 40 40"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+  <Image
+    src="/logo.png"
+    alt="NotifyFlow Logo"
+    width={40}
+    height={40}
     className="transition-transform duration-200 hover:scale-105"
-    role="img"
-    aria-label="NotifyFlow Logo"
-  >
-    <rect
-      width="40"
-      height="40"
-      rx="12"
-      fill="url(#paint0_linear)"
-    />
-    <path
-      d="M20 8L24 16L20 24L16 16Z"
-      fill="white"
-      opacity="0.9"
-    />
-    <circle
-      cx="20"
-      cy="28"
-      r="4"
-      fill="white"
-      opacity="0.9"
-    />
-    <defs>
-      <linearGradient
-        id="paint0_linear"
-        x1="0"
-        y1="0"
-        x2="40"
-        y2="40"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#8B5CF6" />
-        <stop offset="1" stopColor="#3B82F6" />
-      </linearGradient>
-    </defs>
-  </svg>
+  />
 )
 
 export const Navbar = async () => {

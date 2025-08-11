@@ -8,6 +8,7 @@ import { Gem, Home, Key, LucideIcon, Menu, Settings, X } from "lucide-react"
 import Link from "next/link"
 import { PropsWithChildren, useState } from "react"
 import { Drawer } from "vaul"
+import Image from "next/image"
 
 interface SidebarItem {
   href: string
@@ -47,46 +48,13 @@ const Sidebar = ({ onClose }: { onClose?: () => void }) => {
     <div className="space-y-8 relative z-20 flex flex-col h-full">
       {/* logo */}
       <Link href="/" className="flex items-center gap-3 group px-2">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <Image
+          src="/logo.png"
+          alt="NotifyFlow Logo"
+          width={32}
+          height={32}
           className="transition-transform duration-200 group-hover:scale-105"
-        >
-          <rect
-            width="40"
-            height="40"
-            rx="12"
-            fill="url(#paint0_linear)"
-          />
-          <path
-            d="M20 8L24 16L20 24L16 16Z"
-            fill="white"
-            opacity="0.9"
-          />
-          <circle
-            cx="20"
-            cy="28"
-            r="4"
-            fill="white"
-            opacity="0.9"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear"
-              x1="0"
-              y1="0"
-              x2="40"
-              y2="40"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#8B5CF6" />
-              <stop offset="1" stopColor="#3B82F6" />
-            </linearGradient>
-          </defs>
-        </svg>
+        />
         <span className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors duration-200">
           Notify<span className="bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">Flow</span>
         </span>
@@ -150,23 +118,12 @@ const Layout = ({ children }: PropsWithChildren) => {
         {/* mobile header */}
         <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200">
           <Link href="/" className="flex items-center gap-3">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="40" height="40" rx="12" fill="url(#paint0_linear)" />
-              <path d="M20 8L24 16L20 24L16 16Z" fill="white" opacity="0.9" />
-              <circle cx="20" cy="28" r="4" fill="white" opacity="0.9" />
-              <defs>
-                <linearGradient id="paint0_linear" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#8B5CF6" />
-                  <stop offset="1" stopColor="#3B82F6" />
-                </linearGradient>
-              </defs>
-            </svg>
+            <Image
+              src="/logo.png"
+              alt="NotifyFlow Logo"
+              width={28}
+              height={28}
+            />
             <span className="text-lg font-bold text-gray-900">
               Notify<span className="bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">Flow</span>
             </span>
@@ -195,23 +152,12 @@ const Layout = ({ children }: PropsWithChildren) => {
         >
           <div className="flex justify-between items-center mb-6">
             <Link href="/" className="flex items-center gap-3">
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="40" height="40" rx="12" fill="url(#paint0_linear)" />
-                <path d="M20 8L24 16L20 24L16 16Z" fill="white" opacity="0.9" />
-                <circle cx="20" cy="28" r="4" fill="white" opacity="0.9" />
-                <defs>
-                  <linearGradient id="paint0_linear" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#8B5CF6" />
-                    <stop offset="1" stopColor="#3B82F6" />
-                  </linearGradient>
-                </defs>
-              </svg>
+              <Image
+                src="/logo.png"
+                alt="NotifyFlow Logo"
+                width={28}
+                height={28}
+              />
               <span className="text-lg font-bold text-gray-900">
                 Notify<span className="bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">Flow</span>
               </span>

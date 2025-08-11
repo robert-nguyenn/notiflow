@@ -29,7 +29,7 @@ const PricingPage = () => {
     if (user) {
       createCheckoutSession()
     } else {
-      router.push("/sign-in?intent=upgrade")
+      router.push("/sign-up?intent=upgrade")
     }
   }
 
