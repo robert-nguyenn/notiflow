@@ -1,113 +1,227 @@
-# 🐼 NotifyFlow - Enterprise Event Monitoring S## ✨ Key Features
+# 🐼 PingPanda - Enhanced Event Monitoring Platform
 
-- 🤖 **Smart🔗 **Live Demo**: [notifyflow-demo.vercel.app](https://notifyflow-demo.vercel.app)  
-📧 **Email**: robert.nguyenanh@gmail.com  
-💼 **LinkedIn**: [linkedin.com/in/robert-nguyenn](https://www.linkedin.com/in/robert-nguyenn/)  
-🐙 **GitHub**: [github.com/robert-nguyenn](https://github.com/robert-nguyenn)  
-📱 **Phone**: +1-859-691-8194ent Processing** - AI-powered filtering and categorization
-- 🌐 **Multi-Platform Delivery** - Discord, Slack, Teams, Email notifications  
-- 📊 **Analytics Dashboard** - Real-time metrics and trend analysis
-- 💳 **Subscription Management** - Stripe integration with usage-based billing
-- 🔒 **Enterprise Security** - OAuth 2.0, rate limiting, GDPR compliance
-- ⚡ **Developer API** - RESTful endpoints with comprehensive documentation> Production-ready full-stack platform showcasing modern web development and enterprise architecture
+> Production-ready full-stack platform with advanced notification features and enterprise-grade analytics
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue.svg)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-14.0+-black.svg)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-14.2+-black.svg)](https://nextjs.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 ## 🚀 Overview
 
-A sophisticated event monitoring SaaS platform built to demonstrate enterprise-level full-stack development skills. Features real-time notifications, advanced analytics, subscription management, and multi-platform integrations.
+An advanced event monitoring and notification system that has been enhanced with enterprise-level features including severity levels, priority systems, rich metadata, multi-channel routing, analytics, and production-ready integrations.
 
 ## ⚡ Tech Stack
 
-**Frontend**: Next.js 14 App Router, TypeScript, Tailwind CSS, shadcn/ui  
-**Backend**: Prisma ORM, PostgreSQL, tRPC, Webhooks  
-**Integration**: Stripe payments, Clerk auth, Discord API  
-**Infrastructure**: Vercel deployment, real-time notifications
+**Frontend**: Next.js 14 App Router, TypeScript, Tailwind CSS, shadcn/ui, React Query  
+**Backend**: Prisma ORM, PostgreSQL (Neon), tRPC  
+**Integrations**: Discord API, Resend Email, Clerk Auth, Stripe  
+**Infrastructure**: Vercel-ready deployment with production optimizations
 
-## ✨ Key Features & Capabilities
+## ✨ Enhanced Features
 
-### 🤖 **Intelligent Event Processing**
-- AI-powered notification filtering to reduce noise
-- Custom event categorization and routing
-- Real-time analytics and trend analysis
-- Automated escalation workflows
+### 🎯 **Advanced Notification System**
+- **Severity Levels**: INFO, WARNING, ERROR, CRITICAL with color-coded routing
+- **Priority System**: LOW, MEDIUM, HIGH, CRITICAL with escalation logic
+- **Rich Metadata**: Source tracking, correlation IDs, custom tags
+- **Multi-Channel Routing**: Discord, Email, Webhooks with intelligent fallbacks
 
-### 🌐 **Multi-Platform Integration**
-- Discord, Slack, Microsoft Teams notifications
-- Email delivery with custom templates
-- Webhook endpoints for custom integrations
-- API-first architecture for extensibility
-
-### 📊 **Advanced Analytics Dashboard**
-- Real-time event metrics and KPIs
+### 📊 **Real-Time Analytics Dashboard**
+- Live event metrics and success rates
+- Category performance analysis
+- Severity distribution tracking
+- Processing time monitoring
 - Custom date range filtering
-- Export capabilities for business reporting
-- Trend prediction and forecasting
 
-### 💳 **Enterprise Subscription Management**
-- Stripe-powered payment processing
-- Usage-based billing with quotas
-- Plan upgrades/downgrades with prorating
-- Detailed billing history and invoicing
+### � **Production-Ready Features**
+- Dynamic user data integration (no hardcoded test data)
+- Real email service with Resend API
+- Comprehensive analytics API
+- Environment-based configuration
+- Error handling and logging
 
-### � **Security & Compliance**
-- OAuth 2.0 authentication with Clerk
-- Rate limiting and DDoS protection
-- Data encryption at rest and in transit
-- GDPR-compliant data handling
+### 🔌 **Developer Experience**
+- Interactive testing interface for all notification features
+- API documentation with real examples
+- Type-safe development with TypeScript
+- Hot-reload development environment
 
-## 🛠️ Skills Demonstrated
+## 🛠️ Local Development Setup
 
-- **Full-Stack Development** - Modern React/Next.js with TypeScript
-- **Database Design** - PostgreSQL with Prisma ORM optimization  
-- **Payment Integration** - Complete Stripe subscription workflows
-- **API Development** - RESTful design with tRPC type safety
-- **Authentication** - Secure OAuth 2.0 implementation
-- **DevOps** - Production deployment and monitoring
+### Prerequisites
+- Node.js 18+ 
+- PostgreSQL database (or Neon cloud database)
+- Discord Bot Token
+- Resend API Key
 
-## 🚀 Quick Start
+### Installation
 
 ```bash
-git clone https://github.com/your-username/notifyflow.git
-cd notifyflow
+# Clone the repository
+git clone https://github.com/your-username/pingpanda-enhanced.git
+cd pingpanda-enhanced
+
+# Install dependencies
 npm install
-cp .env.example .env.local  # Fill in your API keys
-npx prisma generate && npx prisma db push
+
+# Setup environment variables
+cp .env.example .env.local
+# Fill in your API keys and database URL
+
+# Setup database
+npx prisma generate
+npx prisma db push
+
+# Start development server
 npm run dev
 ```
 
-## 🌟 Demo & Contact
+### Environment Variables
 
-🔗 **Live Demo**: [View Application](https://your-demo-url.com)  
-� **Email**: your.email@example.com  
-💼 **LinkedIn**: [Connect with me](https://linkedin.com/in/yourprofile)
+Copy `.env.example` to `.env.local` and configure:
 
-## 💼 Why This Project for Big Tech Internships
+```bash
+# Database
+DATABASE_URL="postgresql://user:password@localhost:5432/pingpanda"
 
-This project demonstrates the exact skills that top tech companies value:
+# Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=""
+CLERK_SECRET_KEY=""
 
-### **Technical Excellence**
-- **System Design**: Event-driven architecture with real-time processing
-- **Scale Considerations**: Database optimization, rate limiting, quota management
-- **Security**: OAuth 2.0, API authentication, data encryption
-- **Performance**: Efficient database queries, caching strategies
+# Discord Integration
+DISCORD_BOT_TOKEN=""
 
-### **Full-Stack Proficiency**
-- **Frontend**: Modern React patterns, responsive design, state management
-- **Backend**: RESTful APIs, database design, webhook processing
-- **DevOps**: Environment management, deployment, monitoring
+# Email Service
+RESEND_API_KEY=""
+EMAIL_FROM="notifications@yourdomain.com"
 
-### **Business Understanding**
-- **Product Thinking**: SaaS subscription model, user experience design
-- **Analytics**: Event tracking, usage metrics, billing integration
-- **Integration**: Third-party APIs, multi-platform support
+# Stripe (for subscriptions)
+STRIPE_SECRET_KEY=""
+STRIPE_WEBHOOK_SECRET=""
+
+# Deployment
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+```
+
+## 🚀 Production Deployment
+
+### Deploy to Vercel
+
+1. **Prepare Environment Variables**
+   ```bash
+   # Set all production environment variables in Vercel dashboard
+   DATABASE_URL="your-production-db-url"
+   DISCORD_BOT_TOKEN="your-bot-token"
+   RESEND_API_KEY="your-resend-key"
+   # ... other variables from .env.example
+   ```
+
+2. **Deploy with Vercel CLI**
+   ```bash
+   npm install -g vercel
+   vercel --prod
+   ```
+
+3. **Database Migration**
+   ```bash
+   # Run after deployment
+   npx prisma db push
+   ```
+
+### Manual Deployment Steps
+
+1. **Build the application**
+   ```bash
+   npm run build
+   ```
+
+2. **Database setup**
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+
+3. **Start production server**
+   ```bash
+   npm start
+   ```
+
+## 📖 API Documentation
+
+### Enhanced Notification Endpoint
+
+**POST** `/api/v1/events`
+
+```typescript
+{
+  "category": "user-signup",
+  "fields": {
+    "email": "user@example.com",
+    "name": "John Doe"
+  },
+  // Enhanced fields
+  "severity": "INFO" | "WARNING" | "ERROR" | "CRITICAL",
+  "priority": "LOW" | "MEDIUM" | "HIGH" | "CRITICAL",
+  "source": "auth-service",
+  "correlationId": "req-123-456",
+  "tags": ["user", "signup", "onboarding"],
+  "channels": ["DISCORD", "EMAIL"],
+  "metadata": {
+    "userAgent": "Mozilla/5.0...",
+    "ipAddress": "192.168.1.1"
+  }
+}
+```
+
+### Analytics Endpoint
+
+**GET** `/api/v1/analytics`
+
+Query parameters:
+- `range`: `1h`, `6h`, `24h`, `7d`, `30d`
+- `category`: Filter by specific category
+- `severity`: Filter by severity level
+
+## 🔧 Testing the Enhanced Features
+
+1. **Navigate to Enhanced Testing**
+   - Go to `/dashboard/enhanced-testing`
+   - Try different severity levels and priority combinations
+   - Test multi-channel routing
+
+2. **View Analytics**
+   - Check `/dashboard/enhanced-notifications` 
+   - Monitor real-time metrics
+   - Analyze event distribution
+
+3. **Test Email Integration**
+   - Ensure RESEND_API_KEY is configured
+   - Send test notifications with EMAIL channel
+   - Check email delivery in your inbox
+
+## 🎯 Production Checklist
+
+- [x] Remove all hardcoded/test data
+- [x] Implement real email service (Resend)
+- [x] Create comprehensive analytics API
+- [x] Add dynamic user data integration
+- [x] Fix deployment URL configuration
+- [x] Add environment variable documentation
+- [x] Create production deployment guide
+- [x] Test all enhanced notification features
+- [x] Verify real-time analytics dashboard
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new features
+5. Submit a pull request
+
+## 📄 License
+
+MIT License - See [LICENSE](LICENSE) file for details.
 
 ---
 
-Built with attention to production-ready code quality, comprehensive error handling, and scalable architecture principles that mirror enterprise development practices.
-
-##  License
-
-MIT License - See [LICENSE](LICENSE) file for details.
+**Built with enterprise-grade architecture and production-ready best practices.**

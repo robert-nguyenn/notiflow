@@ -12,7 +12,7 @@ const getBaseUrl = () => {
     ? "http://localhost:3000/"
     : process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
-    : "https://<YOUR_DEPLOYED_WORKER_URL>/"
+    : process.env.NEXT_PUBLIC_APP_URL || "/"
 }
 
 export const baseClient = hc<AppType>(getBaseUrl(), {

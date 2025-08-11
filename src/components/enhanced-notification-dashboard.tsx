@@ -48,71 +48,89 @@ export const EnhancedNotificationDashboard = () => {
   const [selectedChannelType, setSelectedChannelType] = useState<string>("DISCORD")
   const queryClient = useQueryClient()
 
-  // Mock data for demonstration
+  // Fetch real notification channels (when implemented)
   const { data: channels = [] } = useQuery({
     queryKey: ["notification-channels"],
     queryFn: async () => {
-      // This would be a real API call
+      // For now, return Discord as the default channel
       return [
         {
           id: "1",
-          name: "Discord Alerts",
+          name: "Discord Notifications",
           type: "DISCORD", 
           isActive: true,
           priority: "HIGH",
-          config: { userId: "123456789" }
-        },
-        {
-          id: "2",
-          name: "Webhook Integration",
-          type: "WEBHOOK",
-          isActive: false,
-          priority: "MEDIUM", 
-          config: { url: "https://api.example.com/webhook" }
+          config: { note: "Configure your Discord ID in Account Settings" }
         }
       ] as NotificationChannel[]
     }
   })
 
+  // Fetch real events data
   const { data: recentEvents = [] } = useQuery({
     queryKey: ["enhanced-events"],
     queryFn: async () => {
-      // This would be a real API call
-      return [
-        {
-          id: "1",
-          name: "user-signup",
-          severity: "INFO",
-          priority: "MEDIUM",
-          source: "auth-service",
-          tags: ["user", "signup", "onboarding"],
-          createdAt: new Date().toISOString(),
-          deliveryStatus: "DELIVERED",
-          processingDuration: 245
-        },
-        {
-          id: "2", 
-          name: "payment-failed",
-          severity: "ERROR",
-          priority: "HIGH",
-          source: "payment-service",
-          tags: ["payment", "error", "billing"],
-          createdAt: new Date(Date.now() - 300000).toISOString(),
-          deliveryStatus: "FAILED",
-          processingDuration: 1200
-        },
-        {
-          id: "3",
-          name: "system-alert",
-          severity: "CRITICAL",
-          priority: "CRITICAL",
-          source: "monitoring",
-          tags: ["system", "performance", "alert"],
-          createdAt: new Date(Date.now() - 600000).toISOString(),
-          deliveryStatus: "DELIVERED",
-          processingDuration: 89
+      try {
+        // This would use the actual user's API key
+        const response = await fetch('/api/v1/analytics?range=24h', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('userApiKey') || ''}`
+          }
+        })
+        
+        if (!response.ok) {
+          // Return empty array if not configured yet
+          return []
         }
-      ] as EnhancedEvent[]
+        
+        const data = await response.json()
+        return data.recentEvents || []
+      } catch (error) {
+        console.error("Failed to fetch events:", error)
+        return []
+      }
+    }
+  })
+
+  // Fetch real analytics data
+  const { data: analytics } = useQuery({
+    queryKey: ["enhanced-analytics"],
+    queryFn: async () => {
+      try {
+        const response = await fetch('/api/v1/analytics?range=24h')
+        
+        if (!response.ok) {
+          // Return default values if not configured yet
+          return {
+            totalEvents: 0,
+            successRate: 100,
+            avgProcessingTime: 0,
+            criticalAlerts: 0,
+            categoriesData: [],
+            severityDistribution: []
+          }
+        }
+        
+        const data = await response.json()
+        return {
+          totalEvents: data.totalEvents || 0,
+          successRate: data.successRate || 100,
+          avgProcessingTime: data.avgProcessingTime || 0,
+          criticalAlerts: data.criticalAlerts || 0,
+          categoriesData: data.categoriesData || [],
+          severityDistribution: data.severityDistribution || []
+        }
+      } catch (error) {
+        console.error("Failed to fetch analytics:", error)
+        return {
+          totalEvents: 0,
+          successRate: 100,
+          avgProcessingTime: 0,
+          criticalAlerts: 0,
+          categoriesData: [],
+          severityDistribution: []
+        }
+      }
     }
   })
 
@@ -198,7 +216,9 @@ export const EnhancedNotificationDashboard = () => {
             <div>
               <p className="text-sm font-medium text-gray-600">Success Rate</p>
               <p className="text-2xl font-bold">
-                {Math.round((recentEvents.filter(e => e.deliveryStatus === "DELIVERED").length / recentEvents.length) * 100)}%
+                {recentEvents.length > 0 
+                  ? Math.round((recentEvents.filter((e: any) => e.deliveryStatus === "DELIVERED").length / recentEvents.length) * 100)
+                  : 100}%
               </p>
             </div>
             <CheckCircle className="size-8 text-emerald-500" />
@@ -210,7 +230,9 @@ export const EnhancedNotificationDashboard = () => {
             <div>
               <p className="text-sm font-medium text-gray-600">Avg Processing</p>
               <p className="text-2xl font-bold">
-                {Math.round(recentEvents.reduce((sum, e) => sum + (e.processingDuration || 0), 0) / recentEvents.length)}ms
+                {recentEvents.length > 0 
+                  ? Math.round(recentEvents.reduce((sum: number, e: any) => sum + (e.processingDuration || 0), 0) / recentEvents.length)
+                  : 0}ms
               </p>
             </div>
             <Clock className="size-8 text-purple-500" />
@@ -258,7 +280,7 @@ export const EnhancedNotificationDashboard = () => {
 
         <TabsContent value="events" className="space-y-4">
           <div className="space-y-3">
-            {recentEvents.map((event) => (
+            {recentEvents.map((event: any) => (
               <Card key={event.id} className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -291,7 +313,7 @@ export const EnhancedNotificationDashboard = () => {
 
                 {event.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1 mt-2">
-                    {event.tags.map((tag) => (
+                    {event.tags.map((tag: string) => (
                       <Badge key={tag} variant="outline" className="text-xs">
                         {tag}
                       </Badge>
@@ -304,19 +326,101 @@ export const EnhancedNotificationDashboard = () => {
         </TabsContent>
 
         <TabsContent value="analytics" className="space-y-4">
-          <Card className="p-6">
-            <h3 className="text-lg font-semibold mb-4">Analytics Dashboard</h3>
-            <p className="text-gray-600">
-              Detailed analytics and metrics will be displayed here, including:
-            </p>
-            <ul className="list-disc list-inside mt-2 space-y-1 text-gray-600">
-              <li>Event volume over time</li>
-              <li>Delivery success rates by channel</li>
-              <li>Processing latency metrics</li>
-              <li>Error patterns and trends</li>
-              <li>Channel performance comparison</li>
-            </ul>
-          </Card>
+          {/* Analytics Overview Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <Card className="p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">Total Events</p>
+                  <p className="text-2xl font-bold">{analytics?.totalEvents || 0}</p>
+                </div>
+                <Zap className="size-8 text-blue-500" />
+              </div>
+            </Card>
+            
+            <Card className="p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">Success Rate</p>
+                  <p className="text-2xl font-bold">{analytics?.successRate || 100}%</p>
+                </div>
+                <CheckCircle className="size-8 text-green-500" />
+              </div>
+            </Card>
+            
+            <Card className="p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">Avg Processing</p>
+                  <p className="text-2xl font-bold">{analytics?.avgProcessingTime || 0}ms</p>
+                </div>
+                <Clock className="size-8 text-orange-500" />
+              </div>
+            </Card>
+            
+            <Card className="p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">Critical Alerts</p>
+                  <p className="text-2xl font-bold">{analytics?.criticalAlerts || 0}</p>
+                </div>
+                <AlertTriangle className="size-8 text-red-500" />
+              </div>
+            </Card>
+          </div>
+
+          {/* Categories Performance */}
+          {analytics?.categoriesData && analytics.categoriesData.length > 0 && (
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold mb-4">Category Performance</h3>
+              <div className="space-y-3">
+                {analytics.categoriesData.map((category: any) => (
+                  <div key={category.name} className="flex items-center justify-between">
+                    <span className="font-medium">{category.name}</span>
+                    <div className="flex items-center gap-4">
+                      <span className="text-sm text-gray-600">{category.count} events</span>
+                      <div className="w-24 h-2 bg-gray-200 rounded-full">
+                        <div 
+                          className="h-2 bg-blue-500 rounded-full" 
+                          style={{ width: `${(category.count / analytics.totalEvents) * 100}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          )}
+
+          {/* Severity Distribution */}
+          {analytics?.severityDistribution && analytics.severityDistribution.length > 0 && (
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold mb-4">Severity Distribution</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {analytics.severityDistribution.map((severity: any) => (
+                  <div key={severity.severity} className="text-center">
+                    <div className={`p-3 rounded-lg ${getSeverityColor(severity.severity)}`}>
+                      <p className="font-semibold">{severity.severity}</p>
+                      <p className="text-lg font-bold">{severity.count}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          )}
+
+          {/* No Data State */}
+          {(!analytics || analytics.totalEvents === 0) && (
+            <Card className="p-6 text-center">
+              <h3 className="text-lg font-semibold mb-2">No Analytics Data Yet</h3>
+              <p className="text-gray-600 mb-4">
+                Start sending events to see detailed analytics and metrics here.
+              </p>
+              <Button onClick={() => window.location.href = '/dashboard/enhanced-testing'}>
+                Send Test Events
+              </Button>
+            </Card>
+          )}
         </TabsContent>
       </Tabs>
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -18,23 +18,25 @@ import {
   Settings
 } from "lucide-react"
 import { Heading } from "@/components/heading"
+import { useUser } from "@clerk/nextjs"
 
-const EXAMPLE_REQUESTS = {
+// Dynamic examples based on user context
+const generateExampleRequests = (userEmail?: string) => ({
   basic: {
     category: "sales",
     fields: {
-      userId: "user_12345",
-      email: "john.doe@example.com",
+      userId: "user_abc123",
+      email: userEmail || "customer@example.com",
       amount: 99.99,
       plan: "pro"
     },
     description: "New user upgrade to Pro plan"
   } as any,
   enhanced: {
-    category: "sales",
+    category: "sales", 
     fields: {
-      userId: "user_12345",
-      email: "john.doe@example.com", 
+      userId: "user_abc123",
+      email: userEmail || "customer@example.com",
       amount: 99.99,
       plan: "pro",
       previousPlan: "free",
@@ -45,17 +47,17 @@ const EXAMPLE_REQUESTS = {
     severity: "INFO",
     priority: "MEDIUM",
     source: "billing-service",
-    correlationId: "corr_abc123",
+    correlationId: `corr_${Date.now()}`,
     tags: ["billing", "upgrade", "revenue"],
     metadata: {
-      userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      userAgent: navigator?.userAgent || "Unknown",
       ipAddress: "192.168.1.100",
-      sessionId: "sess_xyz789",
+      sessionId: `sess_${Date.now()}`,
       environment: "production",
       version: "v2.1.0",
       customData: {
-        campaignId: "summer2024",
-        referralSource: "google_ads"
+        campaignId: "launch2024",
+        referralSource: "organic"
       }
     }
   } as any,
@@ -69,12 +71,13 @@ const EXAMPLE_REQUESTS = {
     },
     description: "Payment processor experiencing connection timeouts",
     severity: "CRITICAL",
-    priority: "CRITICAL",
+    priority: "CRITICAL", 
     source: "monitoring-service",
     tags: ["system", "payment", "outage", "urgent"],
     metadata: {
       environment: "production",
       region: "us-east-1",
+      timestamp: new Date().toISOString(),
       customData: {
         alertRuleId: "rule_payment_health",
         threshold: "5s",
@@ -82,16 +85,25 @@ const EXAMPLE_REQUESTS = {
       }
     }
   } as any
-}
+})
 
 export default function EnhancedNotificationTesting() {
-  const [selectedExample, setSelectedExample] = useState<keyof typeof EXAMPLE_REQUESTS>("enhanced")
-  const [requestBody, setRequestBody] = useState(JSON.stringify(EXAMPLE_REQUESTS.enhanced, null, 2))
+  const { user } = useUser()
+  const [EXAMPLE_REQUESTS, setExampleRequests] = useState(generateExampleRequests())
+  const [selectedExample, setSelectedExample] = useState<keyof ReturnType<typeof generateExampleRequests>>("enhanced")
+  const [requestBody, setRequestBody] = useState("")
   const [response, setResponse] = useState<any>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [apiKey, setApiKey] = useState("")
 
-  const handleExampleChange = (example: keyof typeof EXAMPLE_REQUESTS) => {
+  // Update examples when user data is available
+  useEffect(() => {
+    const examples = generateExampleRequests(user?.emailAddresses[0]?.emailAddress)
+    setExampleRequests(examples)
+    setRequestBody(JSON.stringify(examples.enhanced, null, 2))
+  }, [user])
+
+  const handleExampleChange = (example: keyof ReturnType<typeof generateExampleRequests>) => {
     setSelectedExample(example)
     setRequestBody(JSON.stringify(EXAMPLE_REQUESTS[example], null, 2))
   }
@@ -195,7 +207,7 @@ export default function EnhancedNotificationTesting() {
                       key={key}
                       variant={selectedExample === key ? "default" : "outline"}
                       size="sm"
-                      onClick={() => handleExampleChange(key as keyof typeof EXAMPLE_REQUESTS)}
+                      onClick={() => handleExampleChange(key as keyof ReturnType<typeof generateExampleRequests>)}
                     >
                       {key.charAt(0).toUpperCase() + key.slice(1)}
                     </Button>
@@ -255,7 +267,7 @@ export default function EnhancedNotificationTesting() {
         </TabsContent>
 
         <TabsContent value="examples" className="space-y-6">
-          {Object.entries(EXAMPLE_REQUESTS).map(([key, example]) => (
+          {Object.entries(EXAMPLE_REQUESTS).map(([key, example]: [string, any]) => (
             <Card key={key} className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold capitalize">{key} Event</h3>
@@ -286,7 +298,7 @@ export default function EnhancedNotificationTesting() {
                 variant="outline" 
                 size="sm" 
                 className="mt-4"
-                onClick={() => handleExampleChange(key as keyof typeof EXAMPLE_REQUESTS)}
+                onClick={() => handleExampleChange(key as keyof ReturnType<typeof generateExampleRequests>)}
               >
                 Use This Example
               </Button>
