@@ -40,7 +40,7 @@ const PrivacyPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 shadow-lg">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl">
-                  <Eye className="size-6 text-gray-900" />
+                  <Eye className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Introduction</h2>
               </div>
@@ -58,7 +58,7 @@ const PrivacyPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl">
-                  <Database className="size-6 text-gray-900" />
+                  <Database className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Information We Collect</h2>
               </div>
@@ -100,7 +100,7 @@ const PrivacyPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl">
-                  <Bell className="size-6 text-gray-900" />
+                  <Bell className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">How We Use Your Information</h2>
               </div>
@@ -109,9 +109,9 @@ const PrivacyPage = () => {
                 <p>We use the information we collect for the following purposes:</p>
                 
                 <div className="grid md:grid-cols-2 gap-6 mt-6">
-                  <div className="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                  <div className="bg-white/50 p-6 rounded-xl border border-gray-200 shadow-sm">
                     <h4 className="text-gray-900 font-semibold mb-3">Service Delivery</h4>
-                    <ul className="space-y-2 text-gray-400">
+                    <ul className="space-y-2 text-gray-600">
                       <li>• Process and deliver notifications</li>
                       <li>• Maintain and improve our platform</li>
                       <li>• Provide customer support</li>
@@ -119,9 +119,9 @@ const PrivacyPage = () => {
                     </ul>
                   </div>
                   
-                  <div className="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                  <div className="bg-white/50 p-6 rounded-xl border border-gray-200 shadow-sm">
                     <h4 className="text-gray-900 font-semibold mb-3">Business Operations</h4>
-                    <ul className="space-y-2 text-gray-400">
+                    <ul className="space-y-2 text-gray-600">
                       <li>• Process payments and billing</li>
                       <li>• Communicate service updates</li>
                       <li>• Analyze usage patterns</li>
@@ -136,7 +136,7 @@ const PrivacyPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-orange-600 to-red-600 rounded-xl">
-                  <Users className="size-6 text-gray-900" />
+                  <Users className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Information Sharing</h2>
               </div>
@@ -175,7 +175,7 @@ const PrivacyPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl">
-                  <Lock className="size-6 text-gray-900" />
+                  <Lock className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Data Security</h2>
               </div>
@@ -223,7 +223,7 @@ const PrivacyPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl">
-                  <Shield className="size-6 text-gray-900" />
+                  <Shield className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Your Rights</h2>
               </div>
@@ -240,7 +240,7 @@ const PrivacyPage = () => {
                     { title: "Objection", description: "Object to certain uses of your information" },
                     { title: "Restriction", description: "Request restriction of processing activities" }
                   ].map((right, index) => (
-                    <div key={index} className="flex gap-4 bg-slate-900/30 p-4 rounded-xl border border-white/5">
+                    <div key={index} className="flex gap-4 bg-white/50 p-4 rounded-xl border border-gray-200 shadow-sm">
                       <div className="w-2 h-2 bg-purple-400 rounded-full mt-3 flex-shrink-0"></div>
                       <div>
                         <strong className="text-gray-900">{right.title}:</strong> {right.description}
@@ -249,11 +249,11 @@ const PrivacyPage = () => {
                   ))}
                 </div>
                 
-                <div className="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mt-8">
-                  <p className="text-blue-200">
+                <div className="bg-white/50 border border-gray-200 rounded-xl p-6 mt-8 shadow-sm">
+                  <p className="text-gray-600">
                     <strong>To exercise your rights,</strong> please contact us at{" "}
-                    <a href="mailto:privacy@notifyflow.com" className="text-blue-400 hover:text-blue-300 underline">
-                      privacy@notifyflow.com
+                    <a href="mailto:robert.nguyenanh@gmail.com" className="text-purple-600 hover:text-purple-700 underline">
+                      robert.nguyenanh@gmail.com
                     </a>
                     {" "}or through your account settings.
                   </p>
@@ -269,16 +269,19 @@ const PrivacyPage = () => {
                   If you have questions about this Privacy Policy or our data practices, please contact us:
                 </p>
                 
-                <div className="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                <div className="bg-white/50 p-6 rounded-xl border border-gray-200 shadow-sm">
                   <div className="space-y-3">
                     <div>
                       <strong className="text-gray-900">Email:</strong>{" "}
-                      <a href="mailto:privacy@notifyflow.com" className="text-purple-400 hover:text-purple-300 underline">
-                        privacy@notifyflow.com
+                      <a href="mailto:robert.nguyenanh@gmail.com" className="text-purple-600 hover:text-purple-700 underline">
+                        robert.nguyenanh@gmail.com
                       </a>
                     </div>
                     <div>
-                      <strong className="text-gray-900">Address:</strong> NotifyFlow Technologies Inc., 123 Tech Street, San Francisco, CA 94105
+                      <strong className="text-gray-900">Phone:</strong> +1-859-691-8194
+                    </div>
+                    <div>
+                      <strong className="text-gray-900">Address:</strong> Danville, Kentucky, USA
                     </div>
                     <div>
                       <strong className="text-gray-900">Response Time:</strong> We will respond to your inquiry within 30 days

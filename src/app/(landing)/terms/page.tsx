@@ -40,7 +40,7 @@ const TermsPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 shadow-lg">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl">
-                  <FileText className="size-6 text-gray-900" />
+                  <FileText className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Agreement to Terms</h2>
               </div>
@@ -52,10 +52,10 @@ const TermsPage = () => {
                   By accessing or using our Service, you agree to be bound by these Terms. If you disagree with any part of these Terms, you may not access the Service.
                 </p>
                 
-                <div className="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mt-6">
+                <div className="bg-white/50 border border-gray-200 rounded-xl p-6 mt-6 shadow-sm">
                   <div className="flex gap-3">
-                    <AlertTriangle className="size-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                    <p className="text-blue-200">
+                    <AlertTriangle className="size-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                    <p className="text-gray-600">
                       <strong>Important:</strong> These Terms constitute a legally binding agreement. Please read them carefully and contact us if you have any questions.
                     </p>
                   </div>
@@ -67,7 +67,7 @@ const TermsPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl">
-                  <Zap className="size-6 text-gray-900" />
+                  <Zap className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Service Description</h2>
               </div>
@@ -78,12 +78,12 @@ const TermsPage = () => {
                 </p>
                 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                  <div className="bg-white/50 p-6 rounded-xl border border-gray-200 shadow-sm">
                     <h4 className="text-gray-900 font-semibold mb-3 flex items-center gap-2">
                       <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
                       Core Features
                     </h4>
-                    <ul className="space-y-2 text-gray-400">
+                    <ul className="space-y-2 text-gray-600">
                       <li>• Real-time event monitoring and alerts</li>
                       <li>• Multi-platform notification delivery</li>
                       <li>• Custom event categorization</li>
@@ -92,12 +92,12 @@ const TermsPage = () => {
                     </ul>
                   </div>
                   
-                  <div className="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                  <div className="bg-white/50 p-6 rounded-xl border border-gray-200 shadow-sm">
                     <h4 className="text-gray-900 font-semibold mb-3 flex items-center gap-2">
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                       Service Levels
                     </h4>
-                    <ul className="space-y-2 text-gray-400">
+                    <ul className="space-y-2 text-gray-600">
                       <li>• Free tier with limited features</li>
                       <li>• Pro subscription with full access</li>
                       <li>• Enterprise solutions available</li>
@@ -113,7 +113,7 @@ const TermsPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl">
-                  <Shield className="size-6 text-gray-900" />
+                  <Shield className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">User Accounts & Responsibilities</h2>
               </div>
@@ -138,7 +138,7 @@ const TermsPage = () => {
                       { title: "Content", desc: "Ensure all event data and notifications comply with our acceptable use policy" },
                       { title: "Respect", desc: "Respect the rights of other users and do not interfere with their use of the Service" }
                     ].map((item, index) => (
-                      <div key={index} className="flex gap-4 bg-slate-900/30 p-4 rounded-xl border border-white/5">
+                      <div key={index} className="flex gap-4 bg-white/50 p-4 rounded-xl border border-gray-200 shadow-sm">
                         <div className="w-2 h-2 bg-green-400 rounded-full mt-3 flex-shrink-0"></div>
                         <div>
                           <strong className="text-gray-900">{item.title}:</strong> {item.desc}
@@ -154,7 +154,7 @@ const TermsPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-orange-600 to-red-600 rounded-xl">
-                  <AlertTriangle className="size-6 text-gray-900" />
+                  <AlertTriangle className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Acceptable Use Policy</h2>
               </div>
@@ -173,15 +173,15 @@ const TermsPage = () => {
                     "Abuse or overload our infrastructure beyond fair use limits",
                     "Resell or redistribute access to the Service without authorization"
                   ].map((item, index) => (
-                    <div key={index} className="flex gap-3 bg-red-900/10 border border-red-500/20 p-4 rounded-xl">
+                    <div key={index} className="flex gap-3 bg-red-50 border border-red-200 p-4 rounded-xl">
                       <div className="w-2 h-2 bg-red-400 rounded-full mt-3 flex-shrink-0"></div>
                       <span>{item}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="bg-orange-900/20 border border-orange-500/30 rounded-xl p-6 mt-6">
-                  <p className="text-orange-200">
+                <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mt-6">
+                  <p className="text-orange-700">
                     <strong>Violation Consequences:</strong> Violation of this policy may result in immediate termination of your account and legal action if necessary.
                   </p>
                 </div>
@@ -192,7 +192,7 @@ const TermsPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-yellow-600 to-orange-600 rounded-xl">
-                  <Clock className="size-6 text-gray-900" />
+                  <Clock className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Payment Terms</h2>
               </div>
@@ -219,8 +219,8 @@ const TermsPage = () => {
                   </div>
                 </div>
 
-                <div className="bg-yellow-900/20 border border-yellow-500/30 rounded-xl p-6">
-                  <p className="text-yellow-200">
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+                  <p className="text-amber-700">
                     <strong>Cancellation:</strong> You may cancel your subscription at any time. Your access will continue until the end of your current billing period.
                   </p>
                 </div>
@@ -231,7 +231,7 @@ const TermsPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-slate-600 to-gray-600 rounded-xl">
-                  <Scale className="size-6 text-gray-900" />
+                  <Scale className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Limitation of Liability</h2>
               </div>
@@ -248,8 +248,8 @@ const TermsPage = () => {
                   <li>• Unauthorized access to or alteration of your data</li>
                 </ul>
 
-                <div className="bg-gray-900/30 border border-gray-500/30 rounded-xl p-6 mt-6">
-                  <p className="text-gray-200">
+                <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mt-6">
+                  <p className="text-gray-700">
                     <strong>Service Level Agreement:</strong> We commit to 99.5% uptime. In the event of extended service interruptions, Pro subscribers may be eligible for service credits.
                   </p>
                 </div>
@@ -260,7 +260,7 @@ const TermsPage = () => {
             <section className="bg-white/60 backdrop-blur-sm border border-gray-200 shadow-lg rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-gradient-to-r from-red-600 to-pink-600 rounded-xl">
-                  <AlertTriangle className="size-6 text-gray-900" />
+                  <AlertTriangle className="size-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">Termination</h2>
               </div>
@@ -297,19 +297,22 @@ const TermsPage = () => {
                   If you have questions about these Terms of Service, please contact us:
                 </p>
                 
-                <div className="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                <div className="bg-white/50 p-6 rounded-xl border border-gray-200 shadow-sm">
                   <div className="space-y-3">
                     <div>
                       <strong className="text-gray-900">Email:</strong>{" "}
-                      <a href="mailto:legal@notifyflow.com" className="text-blue-400 hover:text-blue-300 underline">
-                        legal@notifyflow.com
+                      <a href="mailto:robert.nguyenanh@gmail.com" className="text-purple-600 hover:text-purple-700 underline">
+                        robert.nguyenanh@gmail.com
                       </a>
                     </div>
                     <div>
-                      <strong className="text-gray-900">Address:</strong> NotifyFlow Technologies Inc., 123 Tech Street, San Francisco, CA 94105
+                      <strong className="text-gray-900">Phone:</strong> +1-859-691-8194
                     </div>
                     <div>
-                      <strong className="text-gray-900">Business Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM PST
+                      <strong className="text-gray-900">Address:</strong> Danville, Kentucky, USA
+                    </div>
+                    <div>
+                      <strong className="text-gray-900">Business Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST
                     </div>
                   </div>
                 </div>
