@@ -16,7 +16,7 @@ const eb_garamond = EB_Garamond({
 export const metadata: Metadata = {
   title: "NotifyFlow - Smart Business Alerts",
   description: "AI-powered business notifications for Discord, Slack, and more",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/logo.png" }],
 }
 
 export default function RootLayout({

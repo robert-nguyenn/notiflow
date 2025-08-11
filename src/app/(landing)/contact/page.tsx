@@ -40,12 +40,6 @@ const ContactPage = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <Mail className="size-5 text-blue-400" />
-                  <a href="mailto:support@notifyflow.com" className="text-blue-400 hover:text-blue-300 underline">
-                    support@notifyflow.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
                   <Clock className="size-5 text-gray-400" />
                   <span className="text-gray-300">24/7 for Pro users</span>
                 </div>
@@ -66,14 +60,8 @@ const ContactPage = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <Mail className="size-5 text-green-400" />
-                  <a href="mailto:sales@notifyflow.com" className="text-green-400 hover:text-green-300 underline">
-                    sales@notifyflow.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
                   <Clock className="size-5 text-gray-400" />
-                  <span className="text-gray-300">Mon-Fri, 9AM-5PM PST</span>
+                  <span className="text-gray-300">Mon-Fri, 9AM-5PM EST</span>
                 </div>
               </div>
             </div>
@@ -92,14 +80,8 @@ const ContactPage = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <Mail className="size-5 text-purple-400" />
-                  <a href="mailto:technical@notifyflow.com" className="text-purple-400 hover:text-purple-300 underline">
-                    technical@notifyflow.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
                   <Clock className="size-5 text-gray-400" />
-                  <span className="text-gray-300">Mon-Fri, 8AM-8PM PST</span>
+                  <span className="text-gray-300">Mon-Fri, 8AM-8PM EST</span>
                 </div>
               </div>
             </div>
@@ -115,7 +97,7 @@ const ContactPage = () => {
             </p>
           </div>
 
-          <form className="max-w-4xl mx-auto">
+          <form action="mailto:robert.nguyenanh@gmail.com" method="post" encType="text/plain" className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label htmlFor="name" className="block text-white font-medium mb-2">
@@ -224,7 +206,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Email Us</h4>
-                  <p className="text-gray-300">hello@notifyflow.com</p>
+                  <p className="text-gray-300">robert.nguyenanh@gmail.com</p>
                 </div>
               </div>
 
@@ -234,8 +216,8 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Call Us</h4>
-                  <p className="text-gray-300">+1 (555) 123-4567</p>
-                  <p className="text-gray-400 text-sm">Mon-Fri, 9AM-5PM PST</p>
+                  <p className="text-gray-300">+1 859-691-8194</p>
+                  <p className="text-gray-400 text-sm">Mon-Fri, 9AM-5PM EST</p>
                 </div>
               </div>
 
@@ -245,7 +227,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Visit Us</h4>
-                  <p className="text-gray-300">123 Tech Street<br />San Francisco, CA 94105</p>
+                  <p className="text-gray-300">Danville, Kentucky, USA</p>
                 </div>
               </div>
             </div>
