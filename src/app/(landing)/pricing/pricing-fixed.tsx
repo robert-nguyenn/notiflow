@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { MaxWidthWrapper } from "@/components/max-width-wrapper"
 import { Heading } from "@/components/heading"
-import { ShinyButton } from "@/components/shiny-button"
+import { Button } from "@/components/ui/button"
 import { Check, Zap, Shield, Target, Rocket, Crown, Star } from "lucide-react"
 import { useUser } from "@clerk/nextjs"
 import { client } from "@/lib/client"
@@ -163,7 +163,7 @@ const PricingPage = () => {
 
                 {/* CTA */}
                 <div className="px-8 py-8 bg-gradient-to-br from-purple-600/10 to-pink-600/10 border-t border-purple-500/20">
-                  <ShinyButton
+                  <Button
                     onClick={handleGetAccess}
                     className="w-full relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 text-lg shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-[1.02] group border-0"
                     disabled={isLoading}
@@ -174,7 +174,7 @@ const PricingPage = () => {
                       <span>Start Your Intelligence Journey</span>
                       <Zap className="size-5 group-hover:scale-110 transition-transform duration-200" />
                     </div>
-                  </ShinyButton>
+                  </Button>
                   
                   <div className="flex items-center justify-center gap-4 mt-6 text-sm text-gray-400">
                     <div className="flex items-center gap-2">
