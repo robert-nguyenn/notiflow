@@ -1,4 +1,4 @@
-# 🔔 PingPanda - Enterprise Event Monitoring Platform
+# 🔔 NotiFlow - Enterprise Event Monitoring Platform
 
 > **A production-ready, full-stack event monitoring and intelligent notification system built for modern businesses**
 
@@ -8,16 +8,16 @@
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://vercel.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-🌐 **Live Demo:** [https://notificationpanda.vercel.app](https://notificationpanda.vercel.app)
+🌐 **Live Demo:** [https://notiflow.vercel.app](https://notiflow.vercel.app)
 
 ---
 
 ## 🚀 Project Overview
 
-**PingPanda** is a comprehensive, enterprise-grade event monitoring and notification platform designed to help modern businesses stay informed about critical events in real-time. Built from the ground up with scalability, reliability, and developer experience in mind.
+**NotiFlow** is a comprehensive, enterprise-grade event monitoring and notification platform designed to help modern businesses stay informed about critical events in real-time. Built from the ground up with scalability, reliability, and developer experience in mind.
 
 ### 🎯 **Business Problem Solved**
-In today's fast-paced business environment, teams need instant visibility into system events, user actions, sales milestones, and critical alerts. PingPanda bridges the gap between raw system events and actionable business intelligence by providing intelligent, multi-channel notifications that reach the right people at the right time.
+In today's fast-paced business environment, teams need instant visibility into system events, user actions, sales milestones, and critical alerts. NotiFlow bridges the gap between raw system events and actionable business intelligence by providing intelligent, multi-channel notifications that reach the right people at the right time.
 
 ### 🏆 **Key Achievements**
 - **100% TypeScript** codebase with end-to-end type safety
@@ -109,8 +109,8 @@ Resend API Key (optional)
 ### **Installation**
 ```bash
 # Clone the repository
-git clone https://github.com/robert-nguyenn/notificationpanda.git
-cd notificationpanda
+git clone https://github.com/robert-nguyenn/notiflow.git
+cd notiflow
 
 # Install dependencies
 pnpm install
@@ -130,7 +130,7 @@ pnpm dev
 ### **Environment Configuration**
 ```bash
 # Database
-DATABASE_URL="postgresql://user:password@host:5432/pingpanda"
+DATABASE_URL="postgresql://user:password@host:5432/notiflow"
 
 # Authentication (Clerk)
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_..."
@@ -145,7 +145,7 @@ STRIPE_SECRET_KEY="sk_test_..."
 STRIPE_WEBHOOK_SECRET="whsec_..."
 
 # Deployment
-NEXT_PUBLIC_APP_URL="https://notificationpanda.vercel.app"
+NEXT_PUBLIC_APP_URL="https://notiflow.vercel.app"
 ```
 
 ---
@@ -403,7 +403,7 @@ jobs:
 **📧 Email**: robert.nguyenanh@gmail.com  
 **💼 LinkedIn**: [linkedin.com/in/robert-nguyenn](https://www.linkedin.com/in/robert-nguyenn/)  
 **🐙 GitHub**: [github.com/robert-nguyenn](https://github.com/robert-nguyenn)  
-**🌐 Live Demo**: [notificationpanda.vercel.app](https://notificationpanda.vercel.app)
+**🌐 Live Demo**: [notiflow.vercel.app](https://notiflow.vercel.app)
 
 ---
 
