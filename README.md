@@ -8,7 +8,7 @@
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://vercel.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-🌐 **Live Demo:** [https://notiflow.vercel.app](https://notiflow.vercel.app)
+🌐 **Live Demo:** [https://notiflow.vercel.app](notificationpanda.vercel.app)
 
 ---
 
